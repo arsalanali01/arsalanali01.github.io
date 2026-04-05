@@ -60,16 +60,91 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: border-color 0.2s, background 0.2s; }
 .stat-card:hover { border-color: var(--amber-border); background: var(--card-hover); }
-.stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; color: var(--amber); line-height: 1; margin-bottom: 6px; }
+.stat-num { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--amber); line-height: 1.2; margin-bottom: 6px; }
 .stat-label { font-size: 12px; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase; }
 
-/* WORK EXPERIENCE */
-.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.work-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden; text-decoration: none; display: block; cursor: pointer; }
-.work-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-.work-card:hover { border-color: var(--border2); background: var(--card-hover); transform: translateY(-2px); }
-.work-card:hover::before { transform: scaleX(1); }
-.work-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+/* ── VERTICAL TIMELINE ─────────────────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+/* The vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--amber), var(--border2));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.75rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Dot on the line */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.4rem;
+  top: 1.1rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--amber);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--amber);
+  z-index: 1;
+}
+
+/* The card itself */
+.timeline-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.timeline-card:hover {
+  border-color: var(--border2);
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+
+.timeline-card:hover::before {
+  transform: scaleX(1);
+}
+
+.timeline-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
 .work-period { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; }
 .work-status { font-family: 'DM Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 100px; }
 .work-status.current { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #22c55e; }
@@ -79,7 +154,7 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
 .work-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .work-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; font-size: 16px; color: var(--text-dim); transition: color 0.2s, transform 0.2s; }
-.work-card:hover .work-arrow { color: var(--amber); transform: translate(2px, -2px); }
+.timeline-card:hover .work-arrow { color: var(--amber); transform: translate(2px, -2px); }
 
 /* PROJECTS */
 .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -123,9 +198,11 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   .nav-links a { font-size: 10px; }
   section { padding: 4rem 1.25rem; }
   .hero-name { font-size: 2.8rem; }
-  .actually-about-grid, .about-pro-grid, .contact-wrapper, .work-grid { grid-template-columns: 1fr; }
+  .actually-about-grid, .about-pro-grid, .contact-wrapper { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .resume-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .timeline { padding-left: 1.5rem; }
+  .timeline-item::before { left: -1.9rem; }
 }
 </style>
 </head>
@@ -243,7 +320,7 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
     </div>
   </div>
 
-  <!-- 01c — WORK EXPERIENCE -->
+  <!-- 01c — WORK EXPERIENCE (VERTICAL TIMELINE) -->
   <hr class="about-divider">
   <div class="section-header fade-up">
     <span class="section-num">01c</span>
@@ -251,34 +328,41 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
     <div class="section-line"></div>
   </div>
 
-  <div class="work-grid">
-    <a href="experience/job1.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">Summer 2024</span>
-        <span class="work-status past">Past</span>
-      </div>
-      <div class="work-role">Engineering Intern</div>
-      <div class="work-company">Company Name — Houston, TX</div>
-      <p class="work-desc">Assisted with quality documentation, DFM reviews on incoming part designs, and contributed to process improvement initiatives on the production floor.</p>
-      <div class="work-chips">
-        <span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">Process Improvement</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
+  <div class="timeline">
 
-    <a href="experience/job2.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">2023 — 2024</span>
-        <span class="work-status past">Past</span>
-      </div>
-      <div class="work-role">Project Lead — Senior Design</div>
-      <div class="work-company">Texas A&M University</div>
-      <p class="work-desc">Led a 4-person team to design and prototype an automated component sorting system. Responsible for PCB design, mechanical design, and system integration.</p>
-      <div class="work-chips">
-        <span class="chip">PCB Design</span><span class="chip">Automation</span><span class="chip">Team Lead</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
+    <!-- Most recent first -->
+    <div class="timeline-item fade-up">
+      <a href="experience/job1.html" target="_blank" class="timeline-card">
+        <div class="timeline-card-top">
+          <span class="work-period">Summer 2024</span>
+          <span class="work-status past">Past</span>
+        </div>
+        <div class="work-role">Engineering Intern</div>
+        <div class="work-company">Company Name — Houston, TX</div>
+        <p class="work-desc">Assisted with quality documentation, DFM reviews on incoming part designs, and contributed to process improvement initiatives on the production floor.</p>
+        <div class="work-chips">
+          <span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">Process Improvement</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="timeline-item fade-up">
+      <a href="experience/job2.html" target="_blank" class="timeline-card">
+        <div class="timeline-card-top">
+          <span class="work-period">2023 — 2024</span>
+          <span class="work-status past">Past</span>
+        </div>
+        <div class="work-role">Project Lead — Senior Design</div>
+        <div class="work-company">Texas A&M University</div>
+        <p class="work-desc">Led a 4-person team to design and prototype an automated component sorting system. Responsible for PCB design, mechanical design, and system integration.</p>
+        <div class="work-chips">
+          <span class="chip">PCB Design</span><span class="chip">Automation</span><span class="chip">Team Lead</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </a>
+    </div>
+
   </div>
 
 </section>
