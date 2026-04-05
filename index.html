@@ -28,31 +28,6 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .section-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text); }
 .section-line { flex: 1; height: 1px; background: var(--border2); }
 
-/* WORK EXPERIENCE */
-.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-.work-card {
-  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-  padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden;
-  text-decoration: none; display: block; cursor: pointer;
-}
-.work-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-.work-card:hover { border-color: var(--border2); background: var(--card-hover); transform: translateY(-2px); }
-.work-card:hover::before { transform: scaleX(1); }
-
-.work-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
-.work-period { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; }
-.work-status { font-family: 'DM Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 100px; }
-.work-status.current { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #22c55e; }
-.work-status.past { background: var(--card); border: 1px solid var(--border2); color: var(--text-dim); }
-
-.work-role { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-.work-company { font-size: 13px; color: var(--amber); margin-bottom: 0.75rem; }
-.work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
-.work-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.work-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; font-size: 16px; color: var(--text-dim); transition: color 0.2s, transform 0.2s; }
-.work-card:hover .work-arrow { color: var(--amber); transform: translate(2px, -2px); }
-
 /* ACTUALLY ABOUT ME */
 .actually-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 .about-personal-text p { color: var(--text-muted); line-height: 1.85; font-size: 15px; font-weight: 300; margin-bottom: 1.1rem; }
@@ -61,6 +36,8 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .callout-note .note-emoji { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
 .interests-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
 .interest-chip { font-size: 12px; padding: 5px 12px; border-radius: 100px; background: var(--card); border: 1px solid var(--border2); color: var(--text-muted); font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+
+/* FOOD RANKING */
 .food-ranking-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
 .food-rank-title { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
 .food-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
@@ -70,8 +47,10 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .food-name { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.2; }
 .food-subtitle { font-size: 11px; color: var(--text-dim); margin-top: 2px; font-family: 'DM Mono', monospace; }
 
-/* PROFESSIONAL ABOUT */
+/* DIVIDERS */
 .about-divider { border: none; border-top: 1px solid var(--border2); margin: 4rem 0 3rem; }
+
+/* PROFESSIONAL JOURNEY */
 .about-pro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 .about-text p { color: var(--text-muted); line-height: 1.85; font-size: 15px; font-weight: 300; margin-bottom: 1.25rem; }
 .about-text p strong { color: var(--text); font-weight: 500; }
@@ -84,13 +63,27 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; color: var(--amber); line-height: 1; margin-bottom: 6px; }
 .stat-label { font-size: 12px; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase; }
 
+/* WORK EXPERIENCE */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.work-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden; text-decoration: none; display: block; cursor: pointer; }
+.work-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.work-card:hover { border-color: var(--border2); background: var(--card-hover); transform: translateY(-2px); }
+.work-card:hover::before { transform: scaleX(1); }
+.work-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+.work-period { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; }
+.work-status { font-family: 'DM Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 100px; }
+.work-status.current { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #22c55e; }
+.work-status.past { background: var(--card); border: 1px solid var(--border2); color: var(--text-dim); }
+.work-role { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.work-company { font-size: 13px; color: var(--amber); margin-bottom: 0.75rem; }
+.work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
+.work-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.work-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; font-size: 16px; color: var(--text-dim); transition: color 0.2s, transform 0.2s; }
+.work-card:hover .work-arrow { color: var(--amber); transform: translate(2px, -2px); }
+
 /* PROJECTS */
 .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.project-card {
-  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-  padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden;
-  text-decoration: none; display: block; cursor: pointer;
-}
+.project-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden; text-decoration: none; display: block; cursor: pointer; }
 .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
 .project-card:hover { border-color: var(--border2); background: var(--card-hover); transform: translateY(-2px); }
 .project-card:hover::before { transform: scaleX(1); }
@@ -111,7 +104,7 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .resume-role { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
 .resume-org { font-size: 13px; color: var(--amber); margin-bottom: 8px; }
 .resume-detail { font-size: 13px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
-.resume-download { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; color: var(--amber); font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.2s; margin-top: 2rem; cursor: pointer; }
+.resume-download { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; color: var(--amber); font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.2s; margin-top: 2rem; }
 .resume-download:hover { background: var(--amber-border); transform: translateY(-1px); }
 
 /* CONTACT */
@@ -142,7 +135,6 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   <a href="index.html" class="nav-logo">AA_portfolio.exe</a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#resume">Resume</a></li>
@@ -158,7 +150,7 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   <h1 class="hero-name">Arsalan<br><span>Ali.</span></h1>
   <p class="hero-subtitle">// Automation · Quality · DFM · PCB Design</p>
   <p class="hero-desc">
-    I genuinely enjoy <strong>building circuits</strong>, designing PCBs, and figuring out how to make processes run better than they have any right to. Currently interested in PCB Design, DFM/DFA, Quality, Controls, and Automation.
+    I genuinely enjoy <strong>building circuits</strong>, designing PCBs, and figuring out how to make processes run better than they have any right to. Whether it's wiring up a board from scratch or hunting down the one step in a workflow that's slowing everything down — that's my kind of problem.
   </p>
   <div class="hero-tags">
     <span class="tag">Process Automation</span>
@@ -174,48 +166,10 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   </div>
 </section>
 
-<!-- WORK EXPERIENCE -->
-<section id="experience">
-  <div class="section-header fade-up">
-    <span class="section-num">00</span>
-    <h2 class="section-title">Work Experience</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="work-grid">
-
-    <a href="experience/job1.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">Summer 2024</span>
-        <span class="work-status past">Past</span>
-      </div>
-      <div class="work-role">Engineering Intern</div>
-      <div class="work-company">Company Name — Houston, TX</div>
-      <p class="work-desc">Assisted with quality documentation, DFM reviews on incoming part designs, and contributed to process improvement initiatives on the production floor.</p>
-      <div class="work-chips">
-        <span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">Process Improvement</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
-
-    <a href="experience/job2.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">2023 — 2024</span>
-        <span class="work-status past">Past</span>
-      </div>
-      <div class="work-role">Project Lead — Senior Design</div>
-      <div class="work-company">Texas A&M University</div>
-      <p class="work-desc">Led a 4-person team to design and prototype an automated component sorting system. Responsible for PCB design, mechanical design, and system integration.</p>
-      <div class="work-chips">
-        <span class="chip">PCB Design</span><span class="chip">Automation</span><span class="chip">Team Lead</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
-
-  </div>
-</section>
-
-<!-- ACTUALLY ABOUT ME -->
+<!-- ABOUT (contains all sub-sections) -->
 <section id="about">
+
+  <!-- 01 — ACTUALLY ABOUT ME -->
   <div class="section-header fade-up">
     <span class="section-num">01</span>
     <h2 class="section-title">Actually About me</h2>
@@ -258,13 +212,14 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
     </div>
   </div>
 
-  <!-- PROFESSIONAL ABOUT -->
+  <!-- 01b — MY PROFESSIONAL JOURNEY -->
   <hr class="about-divider">
   <div class="section-header fade-up">
     <span class="section-num">01b</span>
-    <h2 class="section-title" style="font-size: 1.5rem;">About me (Professional)</h2>
+    <h2 class="section-title" style="font-size: 1.5rem;">My Professional Journey</h2>
     <div class="section-line"></div>
   </div>
+
   <div class="about-pro-grid">
     <div class="about-text fade-up">
       <p>Mechanical engineering student at <strong>Texas A&M University</strong> with a focus on making manufacturing smarter, more reliable, and more efficient. My work spans hardware and process — from designing PCBs to optimizing production workflows.</p>
@@ -288,6 +243,45 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
       <div class="stat-card"><div class="stat-num">DFM</div><div class="stat-label">Design for manufacturing</div></div>
     </div>
   </div>
+
+  <!-- 01c — WORK EXPERIENCE -->
+  <hr class="about-divider">
+  <div class="section-header fade-up">
+    <span class="section-num">01c</span>
+    <h2 class="section-title" style="font-size: 1.5rem;">Work Experience</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="work-grid">
+    <a href="experience/job1.html" target="_blank" class="work-card fade-up">
+      <div class="work-card-top">
+        <span class="work-period">Summer 2024</span>
+        <span class="work-status past">Past</span>
+      </div>
+      <div class="work-role">Engineering Intern</div>
+      <div class="work-company">Company Name — Houston, TX</div>
+      <p class="work-desc">Assisted with quality documentation, DFM reviews on incoming part designs, and contributed to process improvement initiatives on the production floor.</p>
+      <div class="work-chips">
+        <span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">Process Improvement</span>
+      </div>
+      <span class="work-arrow">↗</span>
+    </a>
+
+    <a href="experience/job2.html" target="_blank" class="work-card fade-up">
+      <div class="work-card-top">
+        <span class="work-period">2023 — 2024</span>
+        <span class="work-status past">Past</span>
+      </div>
+      <div class="work-role">Project Lead — Senior Design</div>
+      <div class="work-company">Texas A&M University</div>
+      <p class="work-desc">Led a 4-person team to design and prototype an automated component sorting system. Responsible for PCB design, mechanical design, and system integration.</p>
+      <div class="work-chips">
+        <span class="chip">PCB Design</span><span class="chip">Automation</span><span class="chip">Team Lead</span>
+      </div>
+      <span class="work-arrow">↗</span>
+    </a>
+  </div>
+
 </section>
 
 <!-- PROJECTS -->
@@ -413,7 +407,6 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   <div class="contact-wrapper fade-up">
     <div>
       <p class="contact-text">I'm actively looking for internships, co-ops, and project collaborations in automation, quality engineering, DFM, or PCB design. If you're building something and need someone who cares about the details — let's talk.</p>
-      <a href="mailto:arsalanaliworka@gmail.com" class="btn btn-primary">Say Hello →</a>
     </div>
     <div class="contact-links">
       <a class="contact-link" href="mailto:arsalanaliworka@gmail.com">
@@ -428,13 +421,13 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   </div>
 </section>
 
-<footer>Designed & built by <span>Arsalan Ali</span> · 2025 · Gig 'Em 🤙</footer>
+<footer>Designed & built by <span>Arsalan Ali</span> · 2026 · Gig 'Em 🤙</footer>
 
 <script>
 function toggleTheme() {
   const body = document.body;
   const btn = document.getElementById('themeBtn');
-  const t = localStorage.getItem('theme') === 'light' ? 'dark' : 'light';
+  const t = body.classList.contains('dark') ? 'light' : 'dark';
   body.classList.replace(body.classList.contains('dark') ? 'dark' : 'light', t);
   localStorage.setItem('theme', t);
   btn.textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
