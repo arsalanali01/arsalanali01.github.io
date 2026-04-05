@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Intern — Arsalan Ali</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); text-decoration: none; margin-bottom: 2.5rem; transition: color 0.2s; letter-spacing: 0.05em; }
+.back-link:hover { color: var(--amber); }
+.page-category { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+.page-category::before { content: ''; width: 20px; height: 1px; background: var(--amber); }
+.page-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: var(--text); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+.page-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 3rem; }
+.page-divider { border: none; border-top: 1px solid var(--border2); margin: 2.5rem 0; }
+.content-block { margin-bottom: 2.5rem; }
+.content-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+.content-text { font-size: 15px; color: var(--text-muted); line-height: 1.85; font-weight: 300; }
+.content-text strong { color: var(--text); font-weight: 500; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2.5rem; }
+.detail-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; }
+.detail-card-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.detail-card-value { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); }
+.placeholder-banner { background: var(--amber-dim); border: 1px dashed var(--amber-border); border-radius: 10px; padding: 2rem; text-align: center; color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.06em; margin-bottom: 2rem; }
+.placeholder-banner .ph-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+@media (max-width: 600px) { .detail-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="dark">
+<nav>
+  <a href="../index.html" class="nav-logo">AA_portfolio.exe</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <a href="../index.html#experience" class="back-link">← Back to experience</a>
+  <div class="page-category">Experience &nbsp; Work Experience</div>
+  <h1 class="page-title">Engineering Intern</h1>
+  <div class="page-chips"><span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">Process Improvement</span><span class="chip">Manufacturing</span></div>
+  
+  <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--amber);margin-bottom:2rem;letter-spacing:0.04em;">@ Company Name</div>
+  <div class="detail-grid">
+    <div class="detail-card">
+      <div class="detail-card-label">Period</div>
+      <div class="detail-card-value">Summer 2024</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Location</div>
+      <div class="detail-card-value">Houston, TX</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Type</div>
+      <div class="detail-card-value">Internship</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Status</div>
+      <div class="detail-card-value">Completed</div>
+    </div></div>
+  <div class="content-block">
+    <div class="content-label">Overview</div>
+    <p class="content-text">Spent the summer embedded with an engineering team, getting hands-on exposure to quality systems and manufacturing processes in a real production environment.</p>
+  </div>
+  <hr class="page-divider">
+  <div class="content-block">
+    <div class="content-label">What I Did</div>
+    <p class="content-text">Assisted with quality documentation including control plans, inspection records, and NCR (non-conformance reports). Performed DFM reviews on incoming part designs from vendors, flagging issues before they reached the production floor. Contributed to a process improvement initiative targeting a recurring defect on one of the main assembly lines.</p>
+  </div>
+  <hr class="page-divider">
+  <div class="content-block">
+    <div class="content-label">What I Learned</div>
+    <p class="content-text">This was my first real exposure to how quality engineering works outside of a classroom. The gap between textbook FMEA and how teams actually run quality reviews in production is significant. I also got a much better feel for how DFM decisions made early in a design can either save or create a lot of pain downstream.</p>
+  </div>
+  <div style="margin-top:2.5rem;">
+    <a href="../index.html#experience" class="btn btn-outline btn-sm">← Back to Experience</a>
+  </div>
+
+</div>
+
+<footer>Designed & built by <span>Arsalan Ali</span> · 2025 · Gig 'Em 🤙</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeBtn');
+  const t = body.classList.contains('dark') ? 'light' : 'dark';
+  body.classList.replace(body.classList.contains('dark') ? 'dark' : 'light', t);
+  localStorage.setItem('theme', t);
+  btn.textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
+}
+(function() {
+  const t = localStorage.getItem('theme') || 'dark';
+  document.body.className = t;
+  document.getElementById('themeBtn').textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
+})();
+</script>
+</body>
+</html>

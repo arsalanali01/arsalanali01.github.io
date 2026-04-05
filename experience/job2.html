@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Lead — Senior Design — Arsalan Ali</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); text-decoration: none; margin-bottom: 2.5rem; transition: color 0.2s; letter-spacing: 0.05em; }
+.back-link:hover { color: var(--amber); }
+.page-category { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+.page-category::before { content: ''; width: 20px; height: 1px; background: var(--amber); }
+.page-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: var(--text); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+.page-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 3rem; }
+.page-divider { border: none; border-top: 1px solid var(--border2); margin: 2.5rem 0; }
+.content-block { margin-bottom: 2.5rem; }
+.content-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+.content-text { font-size: 15px; color: var(--text-muted); line-height: 1.85; font-weight: 300; }
+.content-text strong { color: var(--text); font-weight: 500; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2.5rem; }
+.detail-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; }
+.detail-card-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.detail-card-value { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); }
+.placeholder-banner { background: var(--amber-dim); border: 1px dashed var(--amber-border); border-radius: 10px; padding: 2rem; text-align: center; color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.06em; margin-bottom: 2rem; }
+.placeholder-banner .ph-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+@media (max-width: 600px) { .detail-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="dark">
+<nav>
+  <a href="../index.html" class="nav-logo">AA_portfolio.exe</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <a href="../index.html#experience" class="back-link">← Back to experience</a>
+  <div class="page-category">Experience &nbsp; Academic / Project</div>
+  <h1 class="page-title">Project Lead — Senior Design</h1>
+  <div class="page-chips"><span class="chip">PCB Design</span><span class="chip">Automation</span><span class="chip">Team Lead</span><span class="chip">SolidWorks</span><span class="chip">Integration</span></div>
+  
+  <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--amber);margin-bottom:2rem;letter-spacing:0.04em;">@ Texas A&M University</div>
+  <div class="detail-grid">
+    <div class="detail-card">
+      <div class="detail-card-label">Period</div>
+      <div class="detail-card-value">2023 — 2024</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Team Size</div>
+      <div class="detail-card-value">4 people</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Type</div>
+      <div class="detail-card-value">Senior Capstone</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Status</div>
+      <div class="detail-card-value">Completed</div>
+    </div></div>
+  <div class="content-block">
+    <div class="content-label">Overview</div>
+    <p class="content-text">Led a 4-person senior design team to build an automated component sorting system from concept through working prototype over two semesters.</p>
+  </div>
+  <hr class="page-divider">
+  <div class="content-block">
+    <div class="content-label">What I Did</div>
+    <p class="content-text">As project lead, I owned the overall system architecture and kept the team on schedule across mechanical, electrical, and software workstreams. I personally handled the PCB design (motor driver + sensor interface board in KiCad) and the mechanical enclosure design in SolidWorks. Coordinated system integration testing in the final month and presented the finished project to a panel of industry judges.</p>
+  </div>
+  <hr class="page-divider">
+  <div class="content-block">
+    <div class="content-label">What I Learned</div>
+    <p class="content-text">Running a technical project as the lead taught me a lot about scoping, communication, and making decisions under uncertainty. We had a hardware failure two weeks before the final demo — that experience of debugging a PCB under deadline pressure was probably the most valuable thing I took away from the whole year.</p>
+  </div>
+  <div style="margin-top:2.5rem;">
+    <a href="../index.html#experience" class="btn btn-outline btn-sm">← Back to Experience</a>
+  </div>
+
+</div>
+
+<footer>Designed & built by <span>Arsalan Ali</span> · 2025 · Gig 'Em 🤙</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeBtn');
+  const t = body.classList.contains('dark') ? 'light' : 'dark';
+  body.classList.replace(body.classList.contains('dark') ? 'dark' : 'light', t);
+  localStorage.setItem('theme', t);
+  btn.textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
+}
+(function() {
+  const t = localStorage.getItem('theme') || 'dark';
+  document.body.className = t;
+  document.getElementById('themeBtn').textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
+})();
+</script>
+</body>
+</html>

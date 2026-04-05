@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsalan Ali</title>
+<link rel="stylesheet" href="style.css">
+<style>
+section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; }
+
+/* HERO */
+#hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 6rem; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--amber); background: var(--amber-dim); border: 1px solid var(--amber-border); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; letter-spacing: 0.08em; }
+.hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--amber); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero-name { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.5rem; }
+.hero-name span { color: var(--amber); }
+.hero-subtitle { font-family: 'DM Mono', monospace; font-size: 14px; color: var(--text-muted); margin-bottom: 1.5rem; letter-spacing: 0.04em; }
+.hero-desc { font-size: 17px; color: var(--text-muted); max-width: 580px; line-height: 1.75; font-weight: 300; margin-bottom: 2.5rem; }
+.hero-desc strong { color: var(--text); font-weight: 500; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2.5rem; }
+.tag { font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border2); color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; background: var(--card); }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* SECTION HEADERS */
+.section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
+.section-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--amber); letter-spacing: 0.1em; }
+.section-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text); }
+.section-line { flex: 1; height: 1px; background: var(--border2); }
+
+/* WORK EXPERIENCE */
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.work-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden;
+  text-decoration: none; display: block; cursor: pointer;
+}
+.work-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.work-card:hover { border-color: var(--border2); background: var(--card-hover); transform: translateY(-2px); }
+.work-card:hover::before { transform: scaleX(1); }
+
+.work-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+.work-period { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; }
+.work-status { font-family: 'DM Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 100px; }
+.work-status.current { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #22c55e; }
+.work-status.past { background: var(--card); border: 1px solid var(--border2); color: var(--text-dim); }
+
+.work-role { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.work-company { font-size: 13px; color: var(--amber); margin-bottom: 0.75rem; }
+.work-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 300; margin-bottom: 1rem; }
+.work-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.work-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; font-size: 16px; color: var(--text-dim); transition: color 0.2s, transform 0.2s; }
+.work-card:hover .work-arrow { color: var(--amber); transform: translate(2px, -2px); }
+
+/* ACTUALLY ABOUT ME */
+.actually-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.about-personal-text p { color: var(--text-muted); line-height: 1.85; font-size: 15px; font-weight: 300; margin-bottom: 1.1rem; }
+.about-personal-text p strong { color: var(--text); font-weight: 500; }
+.callout-note { display: inline-flex; align-items: flex-start; gap: 10px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.1rem; }
+.callout-note .note-emoji { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.interests-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
+.interest-chip { font-size: 12px; padding: 5px 12px; border-radius: 100px; background: var(--card); border: 1px solid var(--border2); color: var(--text-muted); font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+.food-ranking-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+.food-rank-title { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+.food-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.food-item:last-child { border-bottom: none; }
+.food-rank-num { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--amber); min-width: 24px; }
+.food-img { width: 44px; height: 44px; border-radius: 8px; border: 1px solid var(--border2); background: var(--bg3); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.food-name { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.2; }
+.food-subtitle { font-size: 11px; color: var(--text-dim); margin-top: 2px; font-family: 'DM Mono', monospace; }
+
+/* PROFESSIONAL ABOUT */
+.about-divider { border: none; border-top: 1px solid var(--border2); margin: 4rem 0 3rem; }
+.about-pro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.about-text p { color: var(--text-muted); line-height: 1.85; font-size: 15px; font-weight: 300; margin-bottom: 1.25rem; }
+.about-text p strong { color: var(--text); font-weight: 500; }
+.skills-list { margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.skill-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-muted); font-family: 'DM Mono', monospace; }
+.skill-dot { width: 5px; height: 5px; background: var(--amber); border-radius: 50%; flex-shrink: 0; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: border-color 0.2s, background 0.2s; }
+.stat-card:hover { border-color: var(--amber-border); background: var(--card-hover); }
+.stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; color: var(--amber); line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 12px; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* PROJECTS */
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.project-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden;
+  text-decoration: none; display: block; cursor: pointer;
+}
+.project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.project-card:hover { border-color: var(--border2); background: var(--card-hover); transform: translateY(-2px); }
+.project-card:hover::before { transform: scaleX(1); }
+.project-category { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; }
+.project-category::before { content: ''; width: 16px; height: 1px; background: var(--amber); }
+.project-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.75rem; }
+.project-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; font-weight: 300; margin-bottom: 1.25rem; }
+.project-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem; }
+.project-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; font-size: 16px; color: var(--text-dim); transition: color 0.2s, transform 0.2s; }
+.project-card:hover .project-arrow { color: var(--amber); transform: translate(2px, -2px); }
+
+/* RESUME */
+.resume-section { margin-bottom: 2.5rem; }
+.resume-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+.resume-item { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-top: 1px solid var(--border); }
+.resume-item:last-child { border-bottom: 1px solid var(--border); }
+.resume-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); padding-top: 3px; }
+.resume-role { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.resume-org { font-size: 13px; color: var(--amber); margin-bottom: 8px; }
+.resume-detail { font-size: 13px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+.resume-download { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; color: var(--amber); font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.2s; margin-top: 2rem; cursor: pointer; }
+.resume-download:hover { background: var(--amber-border); transform: translateY(-1px); }
+
+/* CONTACT */
+.contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.contact-text { font-size: 15px; color: var(--text-muted); line-height: 1.85; font-weight: 300; margin-bottom: 2rem; }
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.contact-link { display: flex; align-items: center; gap: 14px; padding: 1rem 1.25rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+.contact-link:hover { border-color: var(--amber-border); background: var(--card-hover); }
+.contact-icon { width: 36px; height: 36px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; color: var(--amber); font-family: 'DM Mono', monospace; font-weight: 500; }
+.contact-link-text { font-size: 13px; font-family: 'DM Mono', monospace; color: var(--text-muted); }
+.contact-link-label { font-size: 11px; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+
+@media (max-width: 700px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 10px; }
+  section { padding: 4rem 1.25rem; }
+  .hero-name { font-size: 2.8rem; }
+  .actually-about-grid, .about-pro-grid, .contact-wrapper, .work-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .resume-item { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+</style>
+</head>
+<body class="dark">
+
+<nav>
+  <a href="index.html" class="nav-logo">AA_portfolio.exe</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">Mechanical Engineering Student — Texas A&M University '28</div>
+  <h1 class="hero-name">Arsalan<br><span>Ali.</span></h1>
+  <p class="hero-subtitle">// Automation · Quality · DFM · PCB Design</p>
+  <p class="hero-desc">
+    I genuinely enjoy <strong>building circuits</strong>, designing PCBs, and figuring out how to make processes run better than they have any right to. Whether it's wiring up a board from scratch or hunting down the one step in a workflow that's slowing everything down — that's my kind of problem.
+  </p>
+  <div class="hero-tags">
+    <span class="tag">Process Automation</span>
+    <span class="tag">Quality Engineering</span>
+    <span class="tag">DFM</span>
+    <span class="tag">PCB Design</span>
+    <span class="tag">CAD</span>
+    <span class="tag">Lean Manufacturing</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+  </div>
+</section>
+
+<!-- WORK EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-up">
+    <span class="section-num">00</span>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="work-grid">
+
+    <a href="experience/job1.html" target="_blank" class="work-card fade-up">
+      <div class="work-card-top">
+        <span class="work-period">Summer 2024</span>
+        <span class="work-status past">Past</span>
+      </div>
+      <div class="work-role">Engineering Intern</div>
+      <div class="work-company">Company Name — Houston, TX</div>
+      <p class="work-desc">Assisted with quality documentation, DFM reviews on incoming part designs, and contributed to process improvement initiatives on the production floor.</p>
+      <div class="work-chips">
+        <span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">Process Improvement</span>
+      </div>
+      <span class="work-arrow">↗</span>
+    </a>
+
+    <a href="experience/job2.html" target="_blank" class="work-card fade-up">
+      <div class="work-card-top">
+        <span class="work-period">2023 — 2024</span>
+        <span class="work-status past">Past</span>
+      </div>
+      <div class="work-role">Project Lead — Senior Design</div>
+      <div class="work-company">Texas A&M University</div>
+      <p class="work-desc">Led a 4-person team to design and prototype an automated component sorting system. Responsible for PCB design, mechanical design, and system integration.</p>
+      <div class="work-chips">
+        <span class="chip">PCB Design</span><span class="chip">Automation</span><span class="chip">Team Lead</span>
+      </div>
+      <span class="work-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ACTUALLY ABOUT ME -->
+<section id="about">
+  <div class="section-header fade-up">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Actually About me</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="actually-about-grid">
+    <div class="about-personal-text fade-up">
+      <p>I'm Arsalan, born and raised in <strong>Houston, Texas</strong>. Pakistani-American and proud of it — I genuinely love my culture, the food, the people, the hospitality. All of it.</p>
+      <div class="callout-note">
+        <span class="note-emoji">🗑️</span>
+        <span>The one thing I cannot defend about Pakistan? The cricket team. Tragic. Moving on.</span>
+      </div>
+      <p>In my free time I'm usually watching sports — <strong>basketball, football, tennis</strong>. Soccer too, but honestly only when the Euros or World Cup are on. Big <strong>Luka Dončić</strong> and <strong>Kyrie Irving</strong> fan. Imagine if those two ever played on the same team. Actually insane to think about.</p>
+      <p>When I'm not watching sports I'm probably watching reels or doomscrolling. Classic. But I do actually play sports too — <strong>pickleball, basketball, tennis, badminton, ping pong</strong>. Love all of them, especially with friends.</p>
+      <p>Family and friends are a huge part of my life. As a South Asian, that's just built into the culture and honestly I love that it is. Good food, good people, good times.</p>
+      <p>Speaking of good food — I am a <strong>massive foodie</strong>. South Asian food will always have my heart for obvious personal bias reasons, but I'll try anything at least once and immediately rank it. See the tier list →</p>
+      <div class="interests-row">
+        <span class="interest-chip">🏀 Luka & Kyrie</span>
+        <span class="interest-chip">🎾 Tennis</span>
+        <span class="interest-chip">🏓 Pickleball</span>
+        <span class="interest-chip">🏸 Badminton</span>
+        <span class="interest-chip">👨‍👩‍👦 Family</span>
+        <span class="interest-chip">📱 Doomscroller</span>
+        <span class="interest-chip">🍽 Foodie</span>
+      </div>
+    </div>
+
+    <div class="fade-up">
+      <div class="food-ranking-card">
+        <div class="food-rank-title">Arsalan's current food tier list 🔒</div>
+        <div class="food-item"><div class="food-rank-num">1</div><div class="food-img">🍛</div><div><div class="food-name">Biryani</div><div class="food-subtitle">Not even a debate. Locked in forever.</div></div></div>
+        <div class="food-item"><div class="food-rank-num">2</div><div class="food-img">🥩</div><div><div class="food-name">Nihari</div><div class="food-subtitle">Slow-cooked perfection. Sunday morning ritual.</div></div></div>
+        <div class="food-item"><div class="food-rank-num">3</div><div class="food-img">🍕</div><div><div class="food-name">Pizza</div><div class="food-subtitle">Best non-desi food. No cap.</div></div></div>
+        <div class="food-item"><div class="food-rank-num">4</div><div class="food-img">🌮</div><div><div class="food-name">Tacos</div><div class="food-subtitle">Being from Texas helps. Obviously.</div></div></div>
+        <div class="food-item"><div class="food-rank-num">5</div><div class="food-img">🍔</div><div><div class="food-name">Smash Burger</div><div class="food-subtitle">Thin patty, crispy edges. That's the formula.</div></div></div>
+        <div class="food-item"><div class="food-rank-num">6</div><div class="food-img">🍜</div><div><div class="food-name">Ramen</div><div class="food-subtitle">Tried it randomly. Ranked immediately.</div></div></div>
+      </div>
+      <p style="font-size: 11px; color: var(--text-dim); font-family: 'DM Mono', monospace; margin-top: 8px; text-align: right;">* subject to change. biryani is permanent.</p>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL ABOUT -->
+  <hr class="about-divider">
+  <div class="section-header fade-up">
+    <span class="section-num">01b</span>
+    <h2 class="section-title" style="font-size: 1.5rem;">About me (Professional)</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-pro-grid">
+    <div class="about-text fade-up">
+      <p>Mechanical engineering student at <strong>Texas A&M University</strong> with a focus on making manufacturing smarter, more reliable, and more efficient. My work spans hardware and process — from designing PCBs to optimizing production workflows.</p>
+      <p>I care about <strong>design for manufacturability</strong> — building things that aren't just functional on paper, but practical and scalable on the floor. I approach quality not as a checklist, but as something engineered into the product from the start.</p>
+      <p>Whether it's automating a repetitive inspection step, laying out a PCB that's actually easy to assemble, or running a root cause analysis — I like solving the problems that sit at the edge of design and production.</p>
+      <div class="skills-list">
+        <span class="skill-item"><span class="skill-dot"></span>SolidWorks / CAD</span>
+        <span class="skill-item"><span class="skill-dot"></span>KiCad / Altium</span>
+        <span class="skill-item"><span class="skill-dot"></span>Python / MATLAB</span>
+        <span class="skill-item"><span class="skill-dot"></span>GD&T</span>
+        <span class="skill-item"><span class="skill-dot"></span>FMEA / DFMEA</span>
+        <span class="skill-item"><span class="skill-dot"></span>Lean / Six Sigma</span>
+        <span class="skill-item"><span class="skill-dot"></span>Process Automation</span>
+        <span class="skill-item"><span class="skill-dot"></span>Quality Systems</span>
+      </div>
+    </div>
+    <div class="about-stats fade-up">
+      <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Years studying engineering</div></div>
+      <div class="stat-card"><div class="stat-num">6+</div><div class="stat-label">Projects completed</div></div>
+      <div class="stat-card"><div class="stat-num">PCB</div><div class="stat-label">Schematic to fab</div></div>
+      <div class="stat-card"><div class="stat-num">DFM</div><div class="stat-label">Design for manufacturing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-up">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <a href="projects/motor-controller.html" target="_blank" class="project-card fade-up">
+      <div class="project-category">PCB Design</div>
+      <div class="project-title">Custom Motor Controller PCB</div>
+      <p class="project-desc">Designed a compact motor controller board from schematic to fabrication-ready Gerbers. Focused on trace routing, thermal management, and DFM rules for low-cost manufacturing.</p>
+      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">DFM</span><span class="chip">Gerber</span><span class="chip">Thermal Analysis</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="projects/inspection-script.html" target="_blank" class="project-card fade-up">
+      <div class="project-category">Process Automation</div>
+      <div class="project-title">Automated Inspection Script</div>
+      <p class="project-desc">Built a Python-based vision inspection tool to detect dimensional defects on machined parts, automating pass/fail decisions against tolerance specs.</p>
+      <div class="project-chips"><span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">Quality</span><span class="chip">Automation</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="projects/fmea-study.html" target="_blank" class="project-card fade-up">
+      <div class="project-category">Quality Engineering</div>
+      <div class="project-title">FMEA Study — Bracket Assembly</div>
+      <p class="project-desc">Conducted a full DFMEA for a structural bracket assembly, identifying critical failure modes and proposing design changes that improved reliability without adding cost.</p>
+      <div class="project-chips"><span class="chip">DFMEA</span><span class="chip">GD&T</span><span class="chip">Risk Priority</span><span class="chip">SolidWorks</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="projects/enclosure-redesign.html" target="_blank" class="project-card fade-up">
+      <div class="project-category">DFM</div>
+      <div class="project-title">Enclosure Redesign for Injection Molding</div>
+      <p class="project-desc">Redesigned a sheet metal enclosure for injection molding, applying DFM principles — draft angles, wall uniformity, gate location — while maintaining all functional requirements.</p>
+      <div class="project-chips"><span class="chip">SolidWorks</span><span class="chip">Injection Molding</span><span class="chip">DFM</span><span class="chip">Cost Reduction</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="projects/line-balancing.html" target="_blank" class="project-card fade-up">
+      <div class="project-category">Automation</div>
+      <div class="project-title">Line Balancing Tool</div>
+      <p class="project-desc">Developed a tool to model assembly line workstation loads, helping identify bottlenecks and balance cycle times across an 8-station production line.</p>
+      <div class="project-chips"><span class="chip">Lean</span><span class="chip">Excel / Python</span><span class="chip">Takt Time</span><span class="chip">Bottleneck Analysis</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <a href="projects/data-logger.html" target="_blank" class="project-card fade-up">
+      <div class="project-category">PCB + Hardware</div>
+      <div class="project-title">Sensor Data Logger</div>
+      <p class="project-desc">End-to-end hardware project: designed the PCB, wrote firmware for data acquisition from temperature and pressure sensors, and built a Python dashboard for real-time monitoring.</p>
+      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">STM32</span><span class="chip">Python</span><span class="chip">Firmware</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="section-header fade-up">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Resume</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="fade-up">
+    <div class="resume-section">
+      <div class="resume-label">Education</div>
+      <div class="resume-item">
+        <div class="resume-date">2024 — 2028</div>
+        <div>
+          <div class="resume-role">B.S. Mechanical Engineering</div>
+          <div class="resume-org">Texas A&M University</div>
+          <div class="resume-detail">Relevant coursework: Manufacturing Processes, Quality Control, Electronics for Engineers, Machine Design, Thermodynamics, Materials Science.</div>
+        </div>
+      </div>
+    </div>
+    <div class="resume-section">
+      <div class="resume-label">Experience</div>
+      <div class="resume-item">
+        <div class="resume-date">Summer 2024</div>
+        <div>
+          <div class="resume-role">Engineering Intern</div>
+          <div class="resume-org">Company Name</div>
+          <div class="resume-detail">Assisted with quality documentation, DFM reviews on incoming part designs, and contributed to process improvement initiatives on the production floor.</div>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-date">2023 — 2024</div>
+        <div>
+          <div class="resume-role">Project Lead — Senior Design</div>
+          <div class="resume-org">Texas A&M University</div>
+          <div class="resume-detail">Led a 4-person team to design and prototype an automated component sorting system. Responsible for PCB design, mechanical design, and system integration.</div>
+        </div>
+      </div>
+    </div>
+    <div class="resume-section">
+      <div class="resume-label">Skills</div>
+      <div class="resume-item">
+        <div class="resume-date">Software</div>
+        <div class="resume-detail">SolidWorks, KiCad, Altium Designer, MATLAB, Python, Excel, AutoCAD</div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-date">Engineering</div>
+        <div class="resume-detail">GD&T, FMEA / DFMEA, DFM / DFA, Lean Manufacturing, Six Sigma (fundamentals), Statistical Process Control</div>
+      </div>
+    </div>
+    <div class="resume-download" onclick="alert('Add your resume PDF link here!')">↓ Download Full Resume (PDF)</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-up">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-wrapper fade-up">
+    <div>
+      <p class="contact-text">I'm actively looking for internships, co-ops, and project collaborations in automation, quality engineering, DFM, or PCB design. If you're building something and need someone who cares about the details — let's talk.</p>
+      <a href="mailto:arsalanaliworka@gmail.com" class="btn btn-primary">Say Hello →</a>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:arsalanaliworka@gmail.com">
+        <div class="contact-icon">✉</div>
+        <div><div class="contact-link-text">arsalanaliworka@gmail.com</div><div class="contact-link-label">Email</div></div>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/arsalan-ali1/" target="_blank">
+        <div class="contact-icon">in</div>
+        <div><div class="contact-link-text">linkedin.com/in/arsalan-ali1</div><div class="contact-link-label">LinkedIn</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>Designed & built by <span>Arsalan Ali</span> · 2025 · Gig 'Em 🤙</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeBtn');
+  const t = localStorage.getItem('theme') === 'light' ? 'dark' : 'light';
+  body.classList.replace(body.classList.contains('dark') ? 'dark' : 'light', t);
+  localStorage.setItem('theme', t);
+  btn.textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
+}
+(function() {
+  const t = localStorage.getItem('theme') || 'dark';
+  document.body.className = t;
+  document.getElementById('themeBtn').textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
+})();
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

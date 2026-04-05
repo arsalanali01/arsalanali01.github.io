@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'Inter', sans-serif; transition: background 0.4s, color 0.4s; overflow-x: hidden; }
+
+body.dark {
+  --bg: #0a0e1a; --bg2: #111827; --bg3: #1c2333;
+  --amber: #f59e0b; --amber2: #fbbf24;
+  --amber-dim: rgba(245,158,11,0.12); --amber-border: rgba(245,158,11,0.3);
+  --text: #e2e8f0; --text-muted: #94a3b8; --text-dim: #64748b;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
+  --card: rgba(255,255,255,0.04); --card-hover: rgba(255,255,255,0.07);
+  --nav-bg: rgba(10,14,26,0.9); --grid-line: rgba(245,158,11,0.03);
+  --chip-bg: rgba(245,158,11,0.08); --chip-border: rgba(245,158,11,0.2);
+}
+
+body.light {
+  --bg: #f5f1e8; --bg2: #ede9df; --bg3: #e5e0d5;
+  --amber: #b45309; --amber2: #d97706;
+  --amber-dim: rgba(180,83,9,0.08); --amber-border: rgba(180,83,9,0.25);
+  --text: #1a1a2e; --text-muted: #4a4a6a; --text-dim: #8888aa;
+  --border: rgba(0,0,0,0.08); --border2: rgba(0,0,0,0.14);
+  --card: rgba(255,255,255,0.6); --card-hover: rgba(255,255,255,0.85);
+  --nav-bg: rgba(245,241,232,0.92); --grid-line: rgba(180,83,9,0.04);
+  --chip-bg: rgba(180,83,9,0.07); --chip-border: rgba(180,83,9,0.2);
+}
+
+body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px; pointer-events: none; z-index: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem; background: var(--nav-bg);
+  backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 14px; color: var(--amber); letter-spacing: 0.05em; text-decoration: none; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; font-family: 'DM Mono', monospace; }
+.nav-links a:hover { color: var(--amber); }
+.theme-btn { background: var(--card); border: 1px solid var(--border2); border-radius: 100px; padding: 6px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--text-muted); transition: all 0.2s; font-family: 'DM Mono', monospace; font-size: 12px; white-space: nowrap; }
+.theme-btn:hover { border-color: var(--amber-border); color: var(--amber); }
+
+/* BUTTONS */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 14px; font-weight: 500; border-radius: 8px; text-decoration: none; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; border: none; letter-spacing: 0.02em; }
+.btn-primary { background: var(--amber); color: #0a0e1a; font-weight: 600; }
+.btn-primary:hover { background: var(--amber2); transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border2); }
+.btn-outline:hover { border-color: var(--amber-border); color: var(--amber); }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+
+/* CHIPS */
+.chip { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 9px; border-radius: 4px; background: var(--chip-bg); border: 1px solid var(--chip-border); color: var(--amber); letter-spacing: 0.05em; }
+
+/* FADE IN */
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-dim); position: relative; z-index: 1; letter-spacing: 0.05em; }
+footer span { color: var(--amber); }
+
+/* THEME SCRIPT HELPER */
+.theme-script {}
