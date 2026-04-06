@@ -28,20 +28,27 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .section-title { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text); }
 .section-line { flex: 1; height: 1px; background: var(--border2); }
 
-/* WORK EXPERIENCE */
-.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+/* WORK EXPERIENCE TIMELINE */
+.timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+.timeline::before { content: ''; position: absolute; left: 116px; top: 0; bottom: 0; width: 1px; background: var(--border2); }
 
 .work-card {
-  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-  padding: 1.5rem; transition: all 0.25s; position: relative; overflow: hidden;
-  text-decoration: none; display: block; cursor: pointer;
+  display: grid; grid-template-columns: 100px 1fr; gap: 2rem;
+  text-decoration: none; position: relative; padding: 0 0 2.5rem 0;
 }
-.work-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-.work-card:hover { border-color: var(--border2); background: var(--card-hover); transform: translateY(-2px); }
-.work-card:hover::before { transform: scaleX(1); }
+.work-card:last-child { padding-bottom: 0; }
 
-.work-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
-.work-period { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; }
+.work-date-col { text-align: right; padding-top: 4px; }
+.work-period { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; line-height: 1.5; display: block; }
+.work-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--amber); position: absolute; left: 112px; top: 4px; transition: background 0.2s; }
+.work-card:hover .work-dot { background: var(--amber); }
+
+.work-card-body { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem 1.5rem; transition: all 0.25s; position: relative; overflow: hidden; }
+.work-card-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.work-card:hover .work-card-body { border-color: var(--border2); background: var(--card-hover); transform: translateY(-2px); }
+.work-card:hover .work-card-body::before { transform: scaleX(1); }
+
+.work-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
 .work-status { font-family: 'DM Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 100px; }
 .work-status.current { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #22c55e; }
 .work-status.past { background: var(--card); border: 1px solid var(--border2); color: var(--text-dim); }
@@ -130,8 +137,12 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   .nav-links a { font-size: 10px; }
   section { padding: 4rem 1.25rem; }
   .hero-name { font-size: 2.8rem; }
-  .actually-about-grid, .about-pro-grid, .contact-wrapper, .work-grid { grid-template-columns: 1fr; }
+  .actually-about-grid, .about-pro-grid, .contact-wrapper { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
+  .timeline::before { left: 0; display: none; }
+  .work-card { grid-template-columns: 1fr; gap: 0.75rem; }
+  .work-date-col { text-align: left; }
+  .work-dot { display: none; }
   .resume-item { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 </style>
@@ -171,93 +182,6 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   <div class="hero-cta">
     <a href="#projects" class="btn btn-primary">View Projects ↓</a>
     <a href="#contact" class="btn btn-outline">Get in Touch</a>
-  </div>
-</section>
-
-<!-- WORK EXPERIENCE -->
-<section id="experience">
-  <div class="section-header fade-up">
-    <span class="section-num">00</span>
-    <h2 class="section-title">Work Experience</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="work-grid">
-
-    <!-- 1: Daikin — Incoming -->
-    <a href="experience/job2.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">Summer 2026</span>
-        <span class="work-status current">Incoming</span>
-      </div>
-      <div class="work-role">Quality Engineering Intern</div>
-      <div class="work-company">Daikin Comfort Technologies — Houston, TX</div>
-      <p class="work-desc">Joining Daikin Comfort Technologies to support manufacturing quality systems, process improvement, and production operations for one of the world's leading HVAC manufacturers.</p>
-      <div class="work-chips">
-        <span class="chip">Quality Engineering</span><span class="chip">SMT Manufacturing</span><span class="chip">HVAC</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
-
-    <!-- 2: PPSI PCB — Past -->
-    <a href="experience/job1.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">Summer 2024</span>
-        <span class="work-status past">Past</span>
-      </div>
-      <div class="work-role">Quality Engineering Intern</div>
-      <div class="work-company">PCB Manufacturing Co. — Houston, TX</div>
-      <p class="work-desc">Embedded with an engineering team at a PCB manufacturer supporting aerospace and high-reliability products across SMT production, AOI testing, quality control, and process improvement.</p>
-      <div class="work-chips">
-        <span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">PCB</span><span class="chip">Root Cause Analysis</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
-
-    <!-- 3: Autodesk Ambassador — Present -->
-    <a href="experience/job4.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">June 2025 — Present</span>
-        <span class="work-status current">Present</span>
-      </div>
-      <div class="work-role">Autodesk Student Ambassador</div>
-      <div class="work-company">Autodesk — Texas A&M University</div>
-      <p class="work-desc">Representing Autodesk on campus by promoting design tools like Fusion 360, supporting fellow students in learning CAD, and connecting the engineering community with Autodesk's software and resources.</p>
-      <div class="work-chips">
-        <span class="chip">CAD</span><span class="chip">Fusion 360</span><span class="chip">Outreach</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
-
-    <!-- 4: NASA NCAS — Past -->
-    <a href="experience/job3.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">Jan 2025 — Jun 2025</span>
-        <span class="work-status past">Past</span>
-      </div>
-      <div class="work-role">NASA College Aerospace Scholar (NCAS)</div>
-      <div class="work-company">NASA — Remote</div>
-      <p class="work-desc">Selected for NASA's competitive NCAS program — engaging with real aerospace mission design challenges and collaborating directly with NASA engineers and scientists.</p>
-      <div class="work-chips">
-        <span class="chip">Aerospace</span><span class="chip">Systems Engineering</span><span class="chip">NASA</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
-
-    <!-- 5: Makerspace — Past -->
-    <a href="experience/job5.html" target="_blank" class="work-card fade-up">
-      <div class="work-card-top">
-        <span class="work-period">Part-Time</span>
-        <span class="work-status past">Past</span>
-      </div>
-      <div class="work-role">Makerspace Instructor & Technician</div>
-      <div class="work-company">IDEAStudio Makerspace — Houston, TX</div>
-      <p class="work-desc">Trained users on fabrication equipment including 3D printers and laser cutters, maintained machines, and guided students and community members through design-to-prototype workflows.</p>
-      <div class="work-chips">
-        <span class="chip">3D Printing</span><span class="chip">Fabrication</span><span class="chip">Instruction</span>
-      </div>
-      <span class="work-arrow">↗</span>
-    </a>
-
   </div>
 </section>
 
@@ -337,10 +261,132 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   </div>
 </section>
 
+<!-- WORK EXPERIENCE TIMELINE -->
+<section id="experience">
+  <div class="section-header fade-up">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline">
+
+    <!-- 1: Daikin — Incoming -->
+    <a href="experience/job1.html" target="_blank" class="work-card fade-up">
+      <div class="work-date-col">
+        <span class="work-period">Summer<br>2026</span>
+      </div>
+      <div class="work-dot"></div>
+      <div class="work-card-body">
+        <div class="work-card-top">
+          <div>
+            <div class="work-role">Quality Engineering Intern</div>
+            <div class="work-company">Daikin Comfort Technologies — Houston, TX</div>
+          </div>
+          <span class="work-status current">Incoming</span>
+        </div>
+        <p class="work-desc">Joining Daikin Comfort Technologies to support manufacturing quality systems, process improvement, and production operations for one of the world's leading HVAC manufacturers.</p>
+        <div class="work-chips">
+          <span class="chip">Quality Engineering</span><span class="chip">SMT Manufacturing</span><span class="chip">HVAC</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- 2: PCB Mfg — Past -->
+    <a href="experience/job2.html" target="_blank" class="work-card fade-up">
+      <div class="work-date-col">
+        <span class="work-period">Summer<br>2024</span>
+      </div>
+      <div class="work-dot"></div>
+      <div class="work-card-body">
+        <div class="work-card-top">
+          <div>
+            <div class="work-role">Quality Engineering Intern</div>
+            <div class="work-company">PCB Manufacturing Co. — Houston, TX</div>
+          </div>
+          <span class="work-status past">Past</span>
+        </div>
+        <p class="work-desc">Embedded with an engineering team at a PCB manufacturer supporting aerospace and high-reliability products across SMT production, AOI testing, quality control, and process improvement.</p>
+        <div class="work-chips">
+          <span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">PCB</span><span class="chip">Root Cause Analysis</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- 3: Autodesk Ambassador — Present -->
+    <a href="experience/job4.html" target="_blank" class="work-card fade-up">
+      <div class="work-date-col">
+        <span class="work-period">Jun 2025<br>— Present</span>
+      </div>
+      <div class="work-dot"></div>
+      <div class="work-card-body">
+        <div class="work-card-top">
+          <div>
+            <div class="work-role">Autodesk Student Ambassador</div>
+            <div class="work-company">Autodesk — Texas A&M University</div>
+          </div>
+          <span class="work-status current">Present</span>
+        </div>
+        <p class="work-desc">Representing Autodesk on campus by promoting design tools like Fusion 360, supporting fellow students in learning CAD, and connecting the engineering community with Autodesk's software and resources.</p>
+        <div class="work-chips">
+          <span class="chip">CAD</span><span class="chip">Fusion 360</span><span class="chip">Outreach</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- 4: NASA NCAS — Past -->
+    <a href="experience/job3.html" target="_blank" class="work-card fade-up">
+      <div class="work-date-col">
+        <span class="work-period">Jan 2025<br>— Jun 2025</span>
+      </div>
+      <div class="work-dot"></div>
+      <div class="work-card-body">
+        <div class="work-card-top">
+          <div>
+            <div class="work-role">NASA College Aerospace Scholar</div>
+            <div class="work-company">NASA — Remote</div>
+          </div>
+          <span class="work-status past">Past</span>
+        </div>
+        <p class="work-desc">Selected for NASA's competitive NCAS program — engaging with real aerospace mission design challenges and systems engineering curriculum alongside NASA engineers and scientists.</p>
+        <div class="work-chips">
+          <span class="chip">Aerospace</span><span class="chip">Systems Engineering</span><span class="chip">NASA</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </div>
+    </a>
+
+    <!-- 5: Makerspace — Past -->
+    <a href="experience/job5.html" target="_blank" class="work-card fade-up">
+      <div class="work-date-col">
+        <span class="work-period">Houston,<br>TX</span>
+      </div>
+      <div class="work-dot"></div>
+      <div class="work-card-body">
+        <div class="work-card-top">
+          <div>
+            <div class="work-role">Makerspace Instructor & Technician</div>
+            <div class="work-company">IDEAStudio Makerspace — Houston, TX</div>
+          </div>
+          <span class="work-status past">Past</span>
+        </div>
+        <p class="work-desc">Trained and certified users on fabrication equipment including 3D printers and laser cutters, maintained machines, and guided students through design-to-prototype workflows.</p>
+        <div class="work-chips">
+          <span class="chip">3D Printing</span><span class="chip">Fabrication</span><span class="chip">Instruction</span>
+        </div>
+        <span class="work-arrow">↗</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-header fade-up">
-    <span class="section-num">02</span>
+    <span class="section-num">03</span>
     <h2 class="section-title">Projects</h2>
     <div class="section-line"></div>
   </div>
@@ -400,7 +446,7 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 <!-- RESUME -->
 <section id="resume">
   <div class="section-header fade-up">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2 class="section-title">Resume</h2>
     <div class="section-line"></div>
   </div>
@@ -453,7 +499,7 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header fade-up">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2 class="section-title">Contact</h2>
     <div class="section-line"></div>
   </div>
