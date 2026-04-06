@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Lead — Senior Design — Arsalan Ali</title>
+<title>Quality Engineering Intern — PCB Mfg — Arsalan Ali</title>
 <link rel="stylesheet" href="../style.css">
 <style>
 .page-wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
@@ -22,9 +22,49 @@
 .detail-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; }
 .detail-card-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
 .detail-card-value { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); }
-.placeholder-banner { background: var(--amber-dim); border: 1px dashed var(--amber-border); border-radius: 10px; padding: 2rem; text-align: center; color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.06em; margin-bottom: 2rem; }
-.placeholder-banner .ph-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-@media (max-width: 600px) { .detail-grid { grid-template-columns: 1fr; } }
+
+/* Responsibilities */
+.responsibilities-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.responsibilities-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+.resp-dot { width: 5px; height: 5px; background: var(--amber); border-radius: 50%; flex-shrink: 0; margin-top: 9px; }
+
+/* Impact stats row */
+.impact-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 2.5rem; }
+.impact-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; text-align: center; transition: border-color 0.2s, background 0.2s; }
+.impact-card:hover { border-color: var(--amber-border); background: var(--card-hover); }
+.impact-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--amber); line-height: 1; margin-bottom: 6px; }
+.impact-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.4; }
+
+/* Project cards */
+.projects-stack { display: flex; flex-direction: column; gap: 12px; }
+.proj-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color 0.25s, background 0.25s; }
+.proj-card:hover { border-color: var(--border2); background: var(--card-hover); }
+.proj-header { display: flex; align-items: center; gap: 14px; padding: 1.1rem 1.25rem; }
+.proj-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.1em; min-width: 28px; }
+.proj-title-wrap { flex: 1; }
+.proj-title { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.proj-subtitle { font-size: 12px; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
+.proj-result-badge { font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 10px; border-radius: 100px; background: var(--amber-dim); border: 1px solid var(--amber-border); color: var(--amber); white-space: nowrap; flex-shrink: 0; }
+.proj-toggle { font-size: 14px; color: var(--text-dim); flex-shrink: 0; transition: transform 0.25s; }
+.proj-card.open .proj-toggle { transform: rotate(45deg); color: var(--amber); }
+.proj-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s; }
+.proj-card.open .proj-body { max-height: 400px; }
+.proj-body-inner { padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--border); }
+.proj-desc { font-size: 14px; color: var(--text-muted); line-height: 1.75; font-weight: 300; margin-top: 1rem; margin-bottom: 1rem; }
+.proj-outcome { display: flex; align-items: flex-start; gap: 10px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; padding: 10px 12px; font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.proj-outcome-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.proj-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
+
+/* Skills two-col */
+.skills-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.skill-group-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+@media (max-width: 700px) {
+  .detail-grid { grid-template-columns: 1fr; }
+  .impact-row { grid-template-columns: 1fr 1fr; }
+  .skills-two-col { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body class="dark">
@@ -44,51 +84,296 @@
 
 <div class="page-wrap">
   <a href="../index.html#experience" class="back-link">← Back to experience</a>
-  <div class="page-category">Experience &nbsp; Academic / Project</div>
-  <h1 class="page-title">Project Lead — Senior Design</h1>
-  <div class="page-chips"><span class="chip">PCB Design</span><span class="chip">Automation</span><span class="chip">Team Lead</span><span class="chip">SolidWorks</span><span class="chip">Integration</span></div>
-  
-  <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--amber);margin-bottom:2rem;letter-spacing:0.04em;">@ Texas A&M University</div>
+  <div class="page-category">Experience &nbsp;·&nbsp; Internship</div>
+  <h1 class="page-title">Quality Engineering Intern</h1>
+  <div class="page-chips">
+    <span class="chip">PCB Manufacturing</span>
+    <span class="chip">Quality Engineering</span>
+    <span class="chip">SMT Production</span>
+    <span class="chip">Root Cause Analysis</span>
+    <span class="chip">DFM</span>
+    <span class="chip">Python</span>
+  </div>
+
+  <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--amber);margin-bottom:2rem;letter-spacing:0.04em;">@ PCB Manufacturing Company — Aerospace & High-Reliability Products</div>
+
   <div class="detail-grid">
     <div class="detail-card">
       <div class="detail-card-label">Period</div>
-      <div class="detail-card-value">2023 — 2024</div>
-    </div>
-    <div class="detail-card">
-      <div class="detail-card-label">Team Size</div>
-      <div class="detail-card-value">4 people</div>
+      <div class="detail-card-value">Summer 2024</div>
     </div>
     <div class="detail-card">
       <div class="detail-card-label">Type</div>
-      <div class="detail-card-value">Senior Capstone</div>
+      <div class="detail-card-value">Internship</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Focus</div>
+      <div class="detail-card-value">Quality & Process</div>
     </div>
     <div class="detail-card">
       <div class="detail-card-label">Status</div>
       <div class="detail-card-value">Completed</div>
-    </div></div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
   <div class="content-block">
     <div class="content-label">Overview</div>
-    <p class="content-text">Led a 4-person senior design team to build an automated component sorting system from concept through working prototype over two semesters.</p>
+    <p class="content-text">Embedded with an engineering team at a PCB manufacturer supporting aerospace and high-reliability products — gaining hands-on experience across <strong>SMT production, AOI/flying probe testing, quality control, and process improvement</strong>. Worked directly alongside engineers on the production floor applying IPC/ISO standards and running root cause analysis on real failures.</p>
   </div>
+
   <hr class="page-divider">
+
+  <!-- RESPONSIBILITIES -->
   <div class="content-block">
-    <div class="content-label">What I Did</div>
-    <p class="content-text">As project lead, I owned the overall system architecture and kept the team on schedule across mechanical, electrical, and software workstreams. I personally handled the PCB design (motor driver + sensor interface board in KiCad) and the mechanical enclosure design in SolidWorks. Coordinated system integration testing in the final month and presented the finished project to a panel of industry judges.</p>
+    <div class="content-label">Responsibilities</div>
+    <ul class="responsibilities-list">
+      <li><span class="resp-dot"></span>Validated and prepared BOMs for SMT production lines, ensuring component availability and accuracy</li>
+      <li><span class="resp-dot"></span>Converted customer BOMs into internal MRP systems for manufacturing execution</li>
+      <li><span class="resp-dot"></span>Operated and analyzed Automated Optical Inspection (AOI) systems</li>
+      <li><span class="resp-dot"></span>Performed Flying Probe testing and supported test development across multiple product lines</li>
+      <li><span class="resp-dot"></span>Conducted First Article Inspections (FAI) and approved boards for production runs</li>
+      <li><span class="resp-dot"></span>Verified schematics and Gerber files to identify DNPs and missing components</li>
+      <li><span class="resp-dot"></span>Led RMA investigations using root cause analysis (8D, 5 Why)</li>
+      <li><span class="resp-dot"></span>Created and updated work instructions for manufacturing processes</li>
+      <li><span class="resp-dot"></span>Performed equipment calibration checks to ensure compliance with quality standards</li>
+      <li><span class="resp-dot"></span>Collaborated with engineers and operators on production floor improvements</li>
+    </ul>
   </div>
+
   <hr class="page-divider">
+
+  <!-- IMPACT STATS -->
+  <div class="content-block">
+    <div class="content-label">Impact</div>
+    <div class="impact-row">
+      <div class="impact-card">
+        <div class="impact-num">45%</div>
+        <div class="impact-label">RMA Processing Time Reduced</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">30%</div>
+        <div class="impact-label">Board Failure Rate Reduced</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">$40</div>
+        <div class="impact-label">Saved Per 1,000 Boards</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">6</div>
+        <div class="impact-label">Projects Completed</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="page-divider">
+
+  <!-- PROJECTS -->
+  <div class="content-block">
+    <div class="content-label">Projects</div>
+    <div class="projects-stack">
+
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-header">
+          <div class="proj-num">01</div>
+          <div class="proj-title-wrap">
+            <div class="proj-title">Conformal Coating Protection System</div>
+            <div class="proj-subtitle">DFM · SolidWorks · 3D Printing</div>
+          </div>
+          <div class="proj-result-badge">Defects eliminated</div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Designed a custom ESD-safe protective cover to prevent conformal coating contamination on LCD components. Modeled the enclosure in SolidWorks using component dimensions sourced from DigiKey, applied GD&T tolerancing to ensure proper fit across multiple product families, then prototyped using Cura and an Ultimaker S5. Solution was scaled across the D800s, ES3, and MC2 product lines.</p>
+            <div class="proj-outcome">
+              <div class="proj-outcome-icon">✓</div>
+              <div>Eliminated coating defects on sensitive components and improved manufacturing consistency across multiple product lines.</div>
+            </div>
+            <div class="proj-chips">
+              <span class="chip">SolidWorks</span><span class="chip">GD&T</span><span class="chip">3D Printing</span><span class="chip">ESD Safety</span><span class="chip">DFM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-header">
+          <div class="proj-num">02</div>
+          <div class="proj-title-wrap">
+            <div class="proj-title">RMA Data System Optimization</div>
+            <div class="proj-subtitle">Excel · Root Cause Analysis · Process Improvement</div>
+          </div>
+          <div class="proj-result-badge">45% faster</div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Built a structured Excel-based tracking system to standardize RMA failure data collection during investigations. The system improved visibility into failure trends and root causes, replacing an ad-hoc process that was slow and inconsistent.</p>
+            <div class="proj-outcome">
+              <div class="proj-outcome-icon">✓</div>
+              <div>Reduced RMA processing and conversion time by 45%.</div>
+            </div>
+            <div class="proj-chips">
+              <span class="chip">Excel</span><span class="chip">8D</span><span class="chip">5 Why</span><span class="chip">Root Cause Analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-header">
+          <div class="proj-num">03</div>
+          <div class="proj-title-wrap">
+            <div class="proj-title">Flying Probe Test Automation</div>
+            <div class="proj-subtitle">Python · Test Engineering · Automation</div>
+          </div>
+          <div class="proj-result-badge">Operator-run testing</div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Developed Python scripts to automate flying probe validation workflows that previously required constant engineering oversight. The automation enabled operators to run tests independently, freeing up engineering time for higher-priority work.</p>
+            <div class="proj-outcome">
+              <div class="proj-outcome-icon">✓</div>
+              <div>Shifted test execution from engineers to operators, saving critical engineering bandwidth.</div>
+            </div>
+            <div class="proj-chips">
+              <span class="chip">Python</span><span class="chip">Flying Probe</span><span class="chip">Test Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-header">
+          <div class="proj-num">04</div>
+          <div class="proj-title-wrap">
+            <div class="proj-title">Test Coverage Expansion</div>
+            <div class="proj-subtitle">Flying Probe · Electrical Testing · Multi-Product</div>
+          </div>
+          <div class="proj-result-badge">30% fewer failures</div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Expanded flying probe test coverage across the D800s, ES3, and MC2 product lines by implementing new testing procedures. Improved detection of electrical faults during production before boards reached downstream operations.</p>
+            <div class="proj-outcome">
+              <div class="proj-outcome-icon">✓</div>
+              <div>Reduced board failure rates by 30% across covered product lines.</div>
+            </div>
+            <div class="proj-chips">
+              <span class="chip">Flying Probe</span><span class="chip">Electrical Testing</span><span class="chip">IPC Standards</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-header">
+          <div class="proj-num">05</div>
+          <div class="proj-title-wrap">
+            <div class="proj-title">BOM Cross-Verification Automation</div>
+            <div class="proj-subtitle">Python · MRP · Error Prevention</div>
+          </div>
+          <div class="proj-result-badge">Concept / Design</div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Designed a Python-based system to validate BOM consistency by comparing MRP BOMs against SMT machine pick-and-place data, flagging mismatches before production began. Reached concept and design stage during the internship.</p>
+            <div class="proj-outcome">
+              <div class="proj-outcome-icon">✓</div>
+              <div>System designed to catch BOM-to-machine mismatches that could cause production errors — not yet deployed.</div>
+            </div>
+            <div class="proj-chips">
+              <span class="chip">Python</span><span class="chip">MRP</span><span class="chip">SMT</span><span class="chip">BOM Validation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" onclick="toggleProj(this)">
+        <div class="proj-header">
+          <div class="proj-num">06</div>
+          <div class="proj-title-wrap">
+            <div class="proj-title">Packaging Cost Optimization Study</div>
+            <div class="proj-subtitle">Cost Analysis · Process Improvement · Operations</div>
+          </div>
+          <div class="proj-result-badge">$40 / 1,000 boards</div>
+          <div class="proj-toggle">+</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <p class="proj-desc">Conducted a cost analysis across multiple packaging methods, evaluating material and labor costs for each approach. Identified process inefficiencies and documented optimization opportunities with supporting data.</p>
+            <div class="proj-outcome">
+              <div class="proj-outcome-icon">✓</div>
+              <div>Reduced packaging costs by $40 per 1,000 boards and improved overall packaging workflow efficiency.</div>
+            </div>
+            <div class="proj-chips">
+              <span class="chip">Cost Analysis</span><span class="chip">Process Improvement</span><span class="chip">Operations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="page-divider">
+
+  <!-- SKILLS & TOOLS -->
+  <div class="content-block">
+    <div class="content-label">Skills & Tools</div>
+    <div class="skills-two-col">
+      <div>
+        <div class="skill-group-label">Engineering & Quality</div>
+        <div class="skill-tags">
+          <span class="chip">IPC Standards</span>
+          <span class="chip">ISO Processes</span>
+          <span class="chip">Root Cause Analysis</span>
+          <span class="chip">8D / 5 Why</span>
+          <span class="chip">DFM / DFA</span>
+          <span class="chip">SMT Manufacturing</span>
+          <span class="chip">PCB Testing</span>
+          <span class="chip">FAI</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Tools & Software</div>
+        <div class="skill-tags">
+          <span class="chip">Python</span>
+          <span class="chip">Excel / MRP</span>
+          <span class="chip">AOI Systems</span>
+          <span class="chip">Flying Probe</span>
+          <span class="chip">Altium / KiCad</span>
+          <span class="chip">GerbView</span>
+          <span class="chip">SolidWorks</span>
+          <span class="chip">GD&T</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="page-divider">
+
+  <!-- WHAT I LEARNED -->
   <div class="content-block">
     <div class="content-label">What I Learned</div>
-    <p class="content-text">Running a technical project as the lead taught me a lot about scoping, communication, and making decisions under uncertainty. We had a hardware failure two weeks before the final demo — that experience of debugging a PCB under deadline pressure was probably the most valuable thing I took away from the whole year.</p>
+    <p class="content-text">Developed a deep understanding of the full PCB manufacturing lifecycle — from BOM validation through final testing and failure analysis. Saw firsthand how <strong>design decisions made early directly impact manufacturability, cost, and defect rates</strong> downstream. The gap between a textbook FMEA and how quality teams actually run root cause investigations on a production floor is significant — and I came away with a much clearer picture of how to bridge design and manufacturing.</p>
   </div>
+
   <div style="margin-top:2.5rem;">
     <a href="../index.html#experience" class="btn btn-outline btn-sm">← Back to Experience</a>
   </div>
-
 </div>
 
 <footer>Designed & built by <span>Arsalan Ali</span> · 2025 · Gig 'Em 🤙</footer>
 
 <script>
+function toggleProj(card) {
+  card.classList.toggle('open');
+}
 function toggleTheme() {
   const body = document.body;
   const btn = document.getElementById('themeBtn');
