@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Engineering Intern — Arsalan Ali</title>
+<title>Quality Engineering Intern — Arsalan Ali</title>
 <link rel="stylesheet" href="../style.css">
 <style>
 .page-wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
@@ -22,8 +22,22 @@
 .detail-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; }
 .detail-card-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
 .detail-card-value { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); }
-.placeholder-banner { background: var(--amber-dim); border: 1px dashed var(--amber-border); border-radius: 10px; padding: 2rem; text-align: center; color: var(--text-dim); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.06em; margin-bottom: 2rem; }
-.placeholder-banner .ph-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+
+/* Incoming banner */
+.incoming-banner {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(34,197,94,0.07); border: 1px solid rgba(34,197,94,0.25);
+  border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2.5rem;
+}
+.incoming-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.incoming-text { font-family: 'DM Mono', monospace; font-size: 12px; color: #22c55e; letter-spacing: 0.05em; }
+
+/* Responsibilities list */
+.responsibilities-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.responsibilities-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+.resp-dot { width: 5px; height: 5px; background: var(--amber); border-radius: 50%; flex-shrink: 0; margin-top: 9px; }
+
 @media (max-width: 600px) { .detail-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -44,15 +58,26 @@
 
 <div class="page-wrap">
   <a href="../index.html#experience" class="back-link">← Back to experience</a>
-  <div class="page-category">Experience &nbsp; Work Experience</div>
-  <h1 class="page-title">Engineering Intern</h1>
-  <div class="page-chips"><span class="chip">Quality</span><span class="chip">DFM</span><span class="chip">Process Improvement</span><span class="chip">Manufacturing</span></div>
-  
-  <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--amber);margin-bottom:2rem;letter-spacing:0.04em;">@ Company Name</div>
+  <div class="page-category">Experience &nbsp;·&nbsp; Internship</div>
+  <h1 class="page-title">Quality Engineering Intern</h1>
+  <div class="page-chips">
+    <span class="chip">Quality Engineering</span>
+    <span class="chip">SMT Manufacturing</span>
+    <span class="chip">Process Improvement</span>
+    <span class="chip">HVAC</span>
+  </div>
+
+  <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--amber);margin-bottom:1.5rem;letter-spacing:0.04em;">@ Daikin Comfort Technologies — Houston, TX</div>
+
+  <div class="incoming-banner">
+    <div class="incoming-dot"></div>
+    <div class="incoming-text">Incoming — Summer 2026</div>
+  </div>
+
   <div class="detail-grid">
     <div class="detail-card">
       <div class="detail-card-label">Period</div>
-      <div class="detail-card-value">Summer 2024</div>
+      <div class="detail-card-value">Summer 2026</div>
     </div>
     <div class="detail-card">
       <div class="detail-card-label">Location</div>
@@ -64,26 +89,31 @@
     </div>
     <div class="detail-card">
       <div class="detail-card-label">Status</div>
-      <div class="detail-card-value">Completed</div>
-    </div></div>
+      <div class="detail-card-value" style="color:#22c55e;">Incoming</div>
+    </div>
+  </div>
+
   <div class="content-block">
     <div class="content-label">Overview</div>
-    <p class="content-text">Spent the summer embedded with an engineering team, getting hands-on exposure to quality systems and manufacturing processes in a real production environment.</p>
+    <p class="content-text">Joining Daikin Comfort Technologies as a Quality Engineering Intern to support manufacturing quality systems, process improvement, and production operations for one of the world's leading HVAC manufacturers.</p>
   </div>
+
   <hr class="page-divider">
+
   <div class="content-block">
-    <div class="content-label">What I Did</div>
-    <p class="content-text">Assisted with quality documentation including control plans, inspection records, and NCR (non-conformance reports). Performed DFM reviews on incoming part designs from vendors, flagging issues before they reached the production floor. Contributed to a process improvement initiative targeting a recurring defect on one of the main assembly lines.</p>
+    <div class="content-label">Responsibilities</div>
+    <ul class="responsibilities-list">
+      <li><span class="resp-dot"></span>Supporting quality documentation including control plans, inspection records, and non-conformance reports</li>
+      <li><span class="resp-dot"></span>Assisting with DFM reviews on incoming part and assembly designs</li>
+      <li><span class="resp-dot"></span>Contributing to process improvement initiatives on the production floor</li>
+      <li><span class="resp-dot"></span>Collaborating with engineers and operators to identify and resolve manufacturing issues</li>
+      <li><span class="resp-dot"></span>Applying quality standards to support production operations across HVAC product lines</li>
+    </ul>
   </div>
-  <hr class="page-divider">
-  <div class="content-block">
-    <div class="content-label">What I Learned</div>
-    <p class="content-text">This was my first real exposure to how quality engineering works outside of a classroom. The gap between textbook FMEA and how teams actually run quality reviews in production is significant. I also got a much better feel for how DFM decisions made early in a design can either save or create a lot of pain downstream.</p>
-  </div>
+
   <div style="margin-top:2.5rem;">
     <a href="../index.html#experience" class="btn btn-outline btn-sm">← Back to Experience</a>
   </div>
-
 </div>
 
 <footer>Designed & built by <span>Arsalan Ali</span> · 2025 · Gig 'Em 🤙</footer>
