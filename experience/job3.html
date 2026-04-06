@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NASA College Aerospace Scholar — Arsalan Ali</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.page-wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 7rem 2rem 5rem; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted); text-decoration: none; margin-bottom: 2.5rem; transition: color 0.2s; letter-spacing: 0.05em; }
+.back-link:hover { color: var(--amber); }
+.page-category { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+.page-category::before { content: ''; width: 20px; height: 1px; background: var(--amber); }
+.page-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: var(--text); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+.page-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 3rem; }
+.page-divider { border: none; border-top: 1px solid var(--border2); margin: 2.5rem 0; }
+.content-block { margin-bottom: 2.5rem; }
+.content-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
+.content-text { font-size: 15px; color: var(--text-muted); line-height: 1.85; font-weight: 300; }
+.content-text strong { color: var(--text); font-weight: 500; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 2.5rem; }
+.detail-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; }
+.detail-card-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.detail-card-value { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); }
+@media (max-width: 600px) { .detail-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="dark">
+<nav>
+  <a href="../index.html" class="nav-logo">AA_portfolio.exe</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#resume">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <a href="../index.html#experience" class="back-link">← Back to experience</a>
+  <div class="page-category">Experience &nbsp;·&nbsp; Academic Program</div>
+  <h1 class="page-title">NASA College Aerospace Scholar (NCAS)</h1>
+  <div class="page-chips">
+    <span class="chip">Aerospace</span>
+    <span class="chip">Systems Engineering</span>
+    <span class="chip">NASA</span>
+    <span class="chip">Mission Design</span>
+  </div>
+
+  <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--amber);margin-bottom:2rem;letter-spacing:0.04em;">@ NASA — Remote</div>
+
+  <div class="detail-grid">
+    <div class="detail-card">
+      <div class="detail-card-label">Period</div>
+      <div class="detail-card-value">Jan 2025 — Jun 2025</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Location</div>
+      <div class="detail-card-value">Remote</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Type</div>
+      <div class="detail-card-value">Scholar Program</div>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-label">Status</div>
+      <div class="detail-card-value">Completed</div>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <div class="content-label">Overview</div>
+    <p class="content-text">Selected as a NASA College Aerospace Scholar — a competitive NASA program connecting engineering students with real aerospace challenges, mission design exercises, and direct engagement with NASA engineers and scientists.</p>
+  </div>
+
+  <hr class="page-divider">
+
+  <div class="content-block">
+    <div class="content-label">What I Did</div>
+    <p class="content-text">Participated in NASA's structured online curriculum covering aerospace systems, mission design, and current space exploration initiatives. Collaborated with fellow scholars on mission planning exercises and engaged with NASA professionals through seminars and Q&A sessions. Applied engineering fundamentals to real-world aerospace problems including spacecraft design constraints and planetary exploration mission trade-offs.</p>
+  </div>
+
+  <hr class="page-divider">
+
+  <div class="content-block">
+    <div class="content-label">What I Learned</div>
+    <p class="content-text">Gained exposure to how NASA approaches <strong>systems engineering at scale</strong> — the rigor behind mission requirements, design reviews, and the layers of verification that go into any space system. Hearing directly from NASA engineers about how they manage risk and trade-offs reinforced how much quality engineering principles carry across industries.</p>
+  </div>
+
+  <div style="margin-top:2.5rem;">
+    <a href="../index.html#experience" class="btn btn-outline btn-sm">← Back to Experience</a>
+  </div>
+</div>
+
+<footer>Designed & built by <span>Arsalan Ali</span> · 2025 · Gig 'Em 🤙</footer>
+
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeBtn');
+  const t = body.classList.contains('dark') ? 'light' : 'dark';
+  body.classList.replace(body.classList.contains('dark') ? 'dark' : 'light', t);
+  localStorage.setItem('theme', t);
+  btn.textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
+}
+(function() {
+  const t = localStorage.getItem('theme') || 'dark';
+  document.body.className = t;
+  document.getElementById('themeBtn').textContent = t === 'light' ? '🌙 Dark' : '☀ Light';
+})();
+</script>
+</body>
+</html>
