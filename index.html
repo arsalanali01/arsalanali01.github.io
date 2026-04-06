@@ -60,22 +60,14 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
 .work-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; font-size: 16px; color: var(--text-dim); transition: color 0.2s, transform 0.2s; }
 .work-card:hover .work-arrow { color: var(--amber); transform: translate(2px, -2px); }
 
-/* ACTUALLY ABOUT ME */
-.actually-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-.about-personal-text p { color: var(--text-muted); line-height: 1.85; font-size: 15px; font-weight: 300; margin-bottom: 1.1rem; }
-.about-personal-text p strong { color: var(--text); font-weight: 500; }
-.callout-note { display: inline-flex; align-items: flex-start; gap: 10px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.1rem; }
+/* ACTUALLY ABOUT ME — centered layout */
+.about-personal-centered { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 640px; margin: 0 auto; }
+.about-personal-centered p { color: var(--text-muted); line-height: 1.85; font-size: 15px; font-weight: 300; margin-bottom: 1.1rem; }
+.about-personal-centered p strong { color: var(--text); font-weight: 500; }
+.callout-note { display: inline-flex; align-items: flex-start; gap: 10px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.1rem; text-align: left; }
 .callout-note .note-emoji { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.interests-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
+.interests-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; justify-content: center; }
 .interest-chip { font-size: 12px; padding: 5px 12px; border-radius: 100px; background: var(--card); border: 1px solid var(--border2); color: var(--text-muted); font-family: 'DM Mono', monospace; letter-spacing: 0.04em; }
-.food-ranking-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
-.food-rank-title { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
-.food-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-.food-item:last-child { border-bottom: none; }
-.food-rank-num { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--amber); min-width: 24px; }
-.food-img { width: 44px; height: 44px; border-radius: 8px; border: 1px solid var(--border2); background: var(--bg3); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-.food-name { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.2; }
-.food-subtitle { font-size: 11px; color: var(--text-dim); margin-top: 2px; font-family: 'DM Mono', monospace; }
 
 /* PROFESSIONAL ABOUT */
 .about-divider { border: none; border-top: 1px solid var(--border2); margin: 4rem 0 3rem; }
@@ -137,7 +129,7 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   .nav-links a { font-size: 10px; }
   section { padding: 4rem 1.25rem; }
   .hero-name { font-size: 2.8rem; }
-  .actually-about-grid, .about-pro-grid, .contact-wrapper { grid-template-columns: 1fr; }
+  .about-pro-grid, .contact-wrapper { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .timeline::before { left: 0; display: none; }
   .work-card { grid-template-columns: 1fr; gap: 0.75rem; }
@@ -153,8 +145,8 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   <a href="index.html" class="nav-logo">AA_portfolio.exe</a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -193,39 +185,23 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
     <div class="section-line"></div>
   </div>
 
-  <div class="actually-about-grid">
-    <div class="about-personal-text fade-up">
-      <p>I'm Arsalan, born and raised in <strong>Houston, Texas</strong>. Pakistani-American and proud of it — I genuinely love my culture, the food, the people, the hospitality. All of it.</p>
-      <div class="callout-note">
-        <span class="note-emoji">🗑️</span>
-        <span>The one thing I cannot defend about Pakistan? The cricket team. Tragic. Moving on.</span>
-      </div>
-      <p>In my free time I'm usually watching sports — <strong>basketball, football, tennis</strong>. Soccer too, but honestly only when the Euros or World Cup are on. Big <strong>Luka Dončić</strong> and <strong>Kyrie Irving</strong> fan. Imagine if those two ever played on the same team. Actually insane to think about.</p>
-      <p>When I'm not watching sports I'm probably watching reels or doomscrolling. Classic. But I do actually play sports too — <strong>pickleball, basketball, tennis, badminton, ping pong</strong>. Love all of them, especially with friends.</p>
-      <p>Family and friends are a huge part of my life. As a South Asian, that's just built into the culture and honestly I love that it is. Good food, good people, good times.</p>
-      <p>Speaking of good food — I am a <strong>massive foodie</strong>. South Asian food will always have my heart for obvious personal bias reasons, but I'll try anything at least once and immediately rank it. See the tier list →</p>
-      <div class="interests-row">
-        <span class="interest-chip">🏀 Luka & Kyrie</span>
-        <span class="interest-chip">🎾 Tennis</span>
-        <span class="interest-chip">🏓 Pickleball</span>
-        <span class="interest-chip">🏸 Badminton</span>
-        <span class="interest-chip">👨‍👩‍👦 Family</span>
-        <span class="interest-chip">📱 Doomscroller</span>
-        <span class="interest-chip">🍽 Foodie</span>
-      </div>
+  <div class="about-personal-centered fade-up">
+    <p>I'm Arsalan, born and raised in <strong>Houston, Texas</strong>. Pakistani-American and proud of it — I genuinely love my culture, the food, the people, the hospitality. All of it.</p>
+    <div class="callout-note">
+      <span class="note-emoji">🗑️</span>
+      <span>The one thing I cannot defend about Pakistan? The cricket team. Tragic. Moving on.</span>
     </div>
-
-    <div class="fade-up">
-      <div class="food-ranking-card">
-        <div class="food-rank-title">Arsalan's current food tier list 🔒</div>
-        <div class="food-item"><div class="food-rank-num">1</div><div class="food-img">🍛</div><div><div class="food-name">Biryani</div><div class="food-subtitle">Not even a debate. Locked in forever.</div></div></div>
-        <div class="food-item"><div class="food-rank-num">2</div><div class="food-img">🥩</div><div><div class="food-name">Nihari</div><div class="food-subtitle">Slow-cooked perfection. Sunday morning ritual.</div></div></div>
-        <div class="food-item"><div class="food-rank-num">3</div><div class="food-img">🍕</div><div><div class="food-name">Pizza</div><div class="food-subtitle">Best non-desi food. No cap.</div></div></div>
-        <div class="food-item"><div class="food-rank-num">4</div><div class="food-img">🌮</div><div><div class="food-name">Tacos</div><div class="food-subtitle">Being from Texas helps. Obviously.</div></div></div>
-        <div class="food-item"><div class="food-rank-num">5</div><div class="food-img">🍔</div><div><div class="food-name">Smash Burger</div><div class="food-subtitle">Thin patty, crispy edges. That's the formula.</div></div></div>
-        <div class="food-item"><div class="food-rank-num">6</div><div class="food-img">🍜</div><div><div class="food-name">Ramen</div><div class="food-subtitle">Tried it randomly. Ranked immediately.</div></div></div>
-      </div>
-      <p style="font-size: 11px; color: var(--text-dim); font-family: 'DM Mono', monospace; margin-top: 8px; text-align: right;">* subject to change. biryani is permanent.</p>
+    <p>In my free time I'm usually watching sports — <strong>basketball, football, tennis</strong>. Soccer too, but honestly only when the Euros or World Cup are on. Big <strong>Luka Dončić</strong> and <strong>Kyrie Irving</strong> fan. Imagine if those two ever played on the same team. Actually insane to think about.</p>
+    <p>When I'm not watching sports I'm probably watching reels or doomscrolling. Classic. But I do actually play sports too — <strong>pickleball, basketball, tennis, badminton, ping pong</strong>. Love all of them, especially with friends.</p>
+    <p>Family and friends are a huge part of my life. As a South Asian, that's just built into the culture and honestly I love that it is. Good food, good people, good times.</p>
+    <div class="interests-row">
+      <span class="interest-chip">🏀 Luka & Kyrie</span>
+      <span class="interest-chip">🎾 Tennis</span>
+      <span class="interest-chip">🏓 Pickleball</span>
+      <span class="interest-chip">🏸 Badminton</span>
+      <span class="interest-chip">👨‍👩‍👦 Family</span>
+      <span class="interest-chip">📱 Doomscroller</span>
+      <span class="interest-chip">🍽 Foodie</span>
     </div>
   </div>
 
@@ -506,7 +482,6 @@ section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; pad
   <div class="contact-wrapper fade-up">
     <div>
       <p class="contact-text">I'm actively looking for internships, co-ops, and project collaborations in automation, quality engineering, DFM, or PCB design. If you're building something and need someone who cares about the details — let's talk.</p>
-      <a href="mailto:arsalanaliworka@gmail.com" class="btn btn-primary">Say Hello →</a>
     </div>
     <div class="contact-links">
       <a class="contact-link" href="mailto:arsalanaliworka@gmail.com">
