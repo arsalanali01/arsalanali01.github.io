@@ -113,18 +113,24 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
 }
 .timeline-fade-overlay.hidden { opacity: 0; }
 
-/* Toggle button */
+/* Toggle button — arrow only */
 .timeline-toggle {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin: 1.5rem auto 0;
-  font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.08em;
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; border-radius: 50%;
   color: var(--amber); background: var(--amber-dim);
-  border: 1px solid var(--amber-border); border-radius: 100px;
-  padding: 9px 22px; cursor: pointer; transition: all 0.2s;
+  border: 1px solid var(--amber-border);
+  cursor: pointer; transition: background 0.2s, transform 0.2s;
+  margin: 0 auto;
+  font-size: 2rem; line-height: 1;
 }
-.timeline-toggle:hover { background: var(--amber-border); }
-.toggle-chevron { display: inline-block; transition: transform 0.3s; }
-.timeline-toggle.open .toggle-chevron { transform: rotate(180deg); }
+.timeline-toggle:hover { background: var(--amber-border); transform: scale(1.08); }
+.toggle-chevron { display: inline-block; transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); line-height: 1; }
+
+/* Top arrow container */
+#timelineToggleTop { text-align: center; margin-top: 1rem; }
+
+/* Bottom arrow container — hidden until expanded */
+#timelineToggleBottom { display: none; text-align: center; margin-top: 2rem; }
 
 /* ABOUT */
 .about-personal-centered { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 640px; margin: 0 auto; }
@@ -311,42 +317,27 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
   <div class="company-strip fade-up">
 
     <div class="company-logo-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Daikin_logo.svg/320px-Daikin_logo.svg.png"
-           alt="Daikin"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="logo-text-fallback">Daikin</span>
+      <img src="image1.png" alt="Daikin">
       <span class="company-logo-name">Daikin</span>
     </div>
 
     <div class="company-logo-item">
-      <img src="https://www.ppsipcb.com/wp-content/uploads/2021/03/ppsi-logo.png"
-           alt="PPSI"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="logo-text-fallback">PPSI</span>
+      <img src="image2.jpg" alt="PPSI">
       <span class="company-logo-name">PPSI</span>
     </div>
 
     <div class="company-logo-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Autodesk_Logo.svg/320px-Autodesk_Logo.svg.png"
-           alt="Autodesk"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="logo-text-fallback">Autodesk</span>
+      <img src="image3.png" alt="Autodesk">
       <span class="company-logo-name">Autodesk</span>
     </div>
 
     <div class="company-logo-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/200px-NASA_logo.svg.png"
-           alt="NASA"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="logo-text-fallback">NASA</span>
+      <img src="image4.jpeg" alt="NASA">
       <span class="company-logo-name">NASA</span>
     </div>
 
     <div class="company-logo-item">
-      <img src="https://www.lonestar.edu/images/west-houston-institute-logo.png"
-           alt="West Houston Institute"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="logo-text-fallback">WHI</span>
+      <img src="image5.jpeg" alt="West Houston Institute">
       <span class="company-logo-name">West Houston Institute</span>
     </div>
 
@@ -413,11 +404,10 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
     <div class="timeline-fade-overlay" id="timelineFade"></div>
   </div>
 
-  <!-- Toggle button -->
-  <div style="text-align:center; margin-top: 0.5rem;">
-    <button class="timeline-toggle" id="timelineToggleBtn" onclick="toggleTimeline()">
-      <span id="toggleLabel">Show 2 more experiences</span>
-      <span class="toggle-chevron">↓</span>
+  <!-- Arrow button (top — below top 3, above hidden) -->
+  <div id="timelineToggleTop">
+    <button class="timeline-toggle" id="topArrowBtn" onclick="toggleTimeline()">
+      <span class="toggle-chevron" id="topChevron">↓</span>
     </button>
   </div>
 
@@ -460,6 +450,13 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
       </a>
 
     </div>
+  </div>
+
+  <!-- Arrow button (bottom — appears after expand, below last job) -->
+  <div id="timelineToggleBottom">
+    <button class="timeline-toggle" onclick="toggleTimeline()">
+      <span class="toggle-chevron" id="bottomChevron" style="transform:rotate(180deg)">↓</span>
+    </button>
   </div>
 
 </section>
@@ -620,22 +617,28 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 /* TIMELINE TOGGLE */
 function toggleTimeline() {
-  const extra  = document.getElementById('timelineExtra');
-  const fade   = document.getElementById('timelineFade');
-  const btn    = document.getElementById('timelineToggleBtn');
-  const label  = document.getElementById('toggleLabel');
-  const isOpen = extra.classList.contains('open');
+  const extra     = document.getElementById('timelineExtra');
+  const fade      = document.getElementById('timelineFade');
+  const topWrap   = document.getElementById('timelineToggleTop');
+  const botWrap   = document.getElementById('timelineToggleBottom');
+  const topChev   = document.getElementById('topChevron');
+  const botChev   = document.getElementById('bottomChevron');
+  const isOpen    = extra.classList.contains('open');
 
   if (isOpen) {
+    // Collapse: hide extra, show top arrow, hide bottom arrow, restore fade
     extra.classList.remove('open');
     fade.classList.remove('hidden');
-    btn.classList.remove('open');
-    label.textContent = 'Show 2 more experiences';
+    topWrap.style.display = '';
+    botWrap.style.display = 'none';
+    topChev.style.transform = '';
   } else {
+    // Expand: show extra, hide top arrow, show bottom arrow, remove fade
     extra.classList.add('open');
     fade.classList.add('hidden');
-    btn.classList.add('open');
-    label.textContent = 'Show less';
+    topWrap.style.display = 'none';
+    botWrap.style.display = 'block';
+    botChev.style.transform = 'rotate(180deg)';
   }
 }
 </script>
