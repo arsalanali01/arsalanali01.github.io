@@ -132,6 +132,25 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
 /* Bottom arrow container — hidden until expanded */
 #timelineToggleBottom { display: none; text-align: center; margin-top: 2rem; }
 
+/* Projects collapse */
+.projects-extra-wrap {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.projects-extra-wrap.open { max-height: 1400px; }
+
+.projects-fade-wrap { position: relative; }
+.projects-fade-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 110px;
+  background: linear-gradient(to bottom, transparent, var(--bg));
+  pointer-events: none; transition: opacity 0.35s; z-index: 2;
+}
+.projects-fade-overlay.hidden { opacity: 0; }
+
+#projToggleTop { text-align: center; margin-top: 1rem; }
+#projToggleBottom { display: none; text-align: center; margin-top: 2rem; }
+
 /* ABOUT */
 .about-personal-centered { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 640px; margin: 0 auto; }
 .about-personal-centered p { color: var(--text-muted); line-height: 1.85; font-size: 15px; font-weight: 300; margin-bottom: 1.1rem; }
@@ -507,90 +526,116 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
     <button class="filter-btn" data-filter="software" onclick="filterProjects(this)">Software</button>
   </div>
 
-  <div class="projects-grid" id="projectsGrid">
+  <!-- Visible: first 4 cards (2 rows of 2) -->
+  <div class="projects-fade-wrap">
+    <div class="projects-grid" id="projectsGrid">
 
-    <!-- SpO2 PCB: PCB -->
-    <a href="projects/spo2-pcb.html" target="_blank" class="project-card fade-up" data-tags="pcb">
-      <div class="project-category">PCB Design</div>
-      <div class="project-title">SpO2 Pulse Oximeter PCB</div>
-      <p class="project-desc">Designed a custom SpO2 sensor board for blood oxygen monitoring. Handled analog front-end layout, component selection, and fabrication-ready Gerber output with DFM considerations.</p>
-      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">Analog Design</span><span class="chip">Gerber</span><span class="chip">DFM</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
+      <!-- SpO2 PCB: PCB -->
+      <a href="projects/spo2-pcb.html" target="_blank" class="project-card fade-up" data-tags="pcb">
+        <div class="project-category">PCB Design</div>
+        <div class="project-title">SpO2 Pulse Oximeter PCB</div>
+        <p class="project-desc">Designed a custom SpO2 sensor board for blood oxygen monitoring. Handled analog front-end layout, component selection, and fabrication-ready Gerber output with DFM considerations.</p>
+        <div class="project-chips"><span class="chip">KiCad</span><span class="chip">Analog Design</span><span class="chip">Gerber</span><span class="chip">DFM</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
 
-    <!-- BLE Jammer PCB: PCB -->
-    <a href="projects/ble-jammer.html" target="_blank" class="project-card fade-up" data-tags="pcb">
-      <div class="project-category">PCB Design</div>
-      <div class="project-title">BLE Jammer PCB</div>
-      <p class="project-desc">Designed a Bluetooth Low Energy jammer board for RF research purposes. Focused on RF trace routing, impedance matching, antenna placement, and compact 2-layer layout.</p>
-      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">RF Design</span><span class="chip">BLE</span><span class="chip">Embedded</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
+      <!-- BLE Jammer PCB: PCB -->
+      <a href="projects/ble-jammer.html" target="_blank" class="project-card fade-up" data-tags="pcb">
+        <div class="project-category">PCB Design</div>
+        <div class="project-title">BLE Jammer PCB</div>
+        <p class="project-desc">Designed a Bluetooth Low Energy jammer board for RF research purposes. Focused on RF trace routing, impedance matching, antenna placement, and compact 2-layer layout.</p>
+        <div class="project-chips"><span class="chip">KiCad</span><span class="chip">RF Design</span><span class="chip">BLE</span><span class="chip">Embedded</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
 
-    <!-- AirTag Open Source PCB: PCB -->
-    <a href="projects/airtag-pcb.html" target="_blank" class="project-card fade-up" data-tags="pcb">
-      <div class="project-category">PCB Design</div>
-      <div class="project-title">AirTag Open-Source PCB</div>
-      <p class="project-desc">Reverse-engineered and redesigned an open-source AirTag-compatible tracker board. Replicated key UWB and BLE functionality in an accessible, modifiable form factor using publicly available components.</p>
-      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">UWB</span><span class="chip">BLE</span><span class="chip">PCB Layout</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
+      <!-- AirTag Open Source PCB: PCB -->
+      <a href="projects/airtag-pcb.html" target="_blank" class="project-card fade-up" data-tags="pcb">
+        <div class="project-category">PCB Design</div>
+        <div class="project-title">AirTag Open-Source PCB</div>
+        <p class="project-desc">Reverse-engineered and redesigned an open-source AirTag-compatible tracker board. Replicated key UWB and BLE functionality in an accessible, modifiable form factor using publicly available components.</p>
+        <div class="project-chips"><span class="chip">KiCad</span><span class="chip">UWB</span><span class="chip">BLE</span><span class="chip">PCB Layout</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
 
-    <!-- Gearbox Mechanism: CAD, DFM -->
-    <a href="projects/gearbox-mechanism.html" target="_blank" class="project-card fade-up" data-tags="cad dfm">
-      <div class="project-category">CAD / DFM</div>
-      <div class="project-title">Gearbox Gear Mechanism</div>
-      <p class="project-desc">Designed and 3D printed a multi-stage gearbox assembly in SolidWorks. Applied GD&T tolerancing and DFM principles for printability, fit, and functional clearance between mating components.</p>
-      <div class="project-chips"><span class="chip">SolidWorks</span><span class="chip">3D Printing</span><span class="chip">GD&T</span><span class="chip">Tolerancing</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
+      <!-- Gearbox Mechanism: CAD, DFM -->
+      <a href="projects/gearbox-mechanism.html" target="_blank" class="project-card fade-up" data-tags="cad dfm">
+        <div class="project-category">CAD / DFM</div>
+        <div class="project-title">Gearbox Gear Mechanism</div>
+        <p class="project-desc">Designed and 3D printed a multi-stage gearbox assembly in SolidWorks. Applied GD&T tolerancing and DFM principles for printability, fit, and functional clearance between mating components.</p>
+        <div class="project-chips"><span class="chip">SolidWorks</span><span class="chip">3D Printing</span><span class="chip">GD&T</span><span class="chip">Tolerancing</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
 
-    <!-- LSAMP ISS Truss: CAD, DFM, Quality -->
-    <a href="projects/lsamp-iss-truss.html" target="_blank" class="project-card fade-up" data-tags="cad dfm quality">
-      <div class="project-category">CAD / DFM / Systems</div>
-      <div class="project-title">LSAMP ISS Mimic Truss Redesign</div>
-      <p class="project-desc">Collaborated with Boeing engineers and Cornell students to redesign the truss connection and solar array insertion mechanism on an ISS mimic structure. Conducted FMEA, applied SolidWorks modeling, and visited NASA's Neutral Buoyancy Lab.</p>
-      <div class="project-chips"><span class="chip">SolidWorks</span><span class="chip">FMEA</span><span class="chip">Boeing</span><span class="chip">NASA NBL</span><span class="chip">Systems Engineering</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
-
-    <!-- DMAIC Simulated Project: Quality -->
-    <a href="projects/dmaic-project.html" target="_blank" class="project-card fade-up" data-tags="quality">
-      <div class="project-category">Quality Engineering</div>
-      <div class="project-title">DMAIC Simulated Project</div>
-      <p class="project-desc">Ran a full DMAIC (Define, Measure, Analyze, Improve, Control) cycle on a simulated production process. Identified root causes of defect variation, applied statistical analysis, and proposed control measures to sustain improvements.</p>
-      <div class="project-chips"><span class="chip">DMAIC</span><span class="chip">Six Sigma</span><span class="chip">SPC</span><span class="chip">Root Cause Analysis</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
-
-    <!-- BOM to SMT Python: Software, Automation, Quality -->
-    <a href="projects/bom-smt-automation.html" target="_blank" class="project-card fade-up" data-tags="software automation quality">
-      <div class="project-category">Software / Automation</div>
-      <div class="project-title">BOM to SMT Python Automation</div>
-      <p class="project-desc">Built a Python CSV-to-CSV cross-checker that validates customer BOMs against SMT machine pick-and-place files before production runs begin. Flags part number mismatches, missing DNPs, and quantity discrepancies automatically.</p>
-      <div class="project-chips"><span class="chip">Python</span><span class="chip">CSV Parsing</span><span class="chip">SMT</span><span class="chip">BOM Validation</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
-
-    <!-- Ladder Logic PLC: Automation -->
-    <a href="projects/ladder-logic-plc.html" target="_blank" class="project-card fade-up" data-tags="automation">
-      <div class="project-category">Automation / PLC</div>
-      <div class="project-title">Conveyor Control — Ladder Logic</div>
-      <p class="project-desc">Programmed a simulated conveyor sorting system using Ladder Logic on a PLC platform. Implemented sensor interlocks, motor control rungs, and fault handling logic to manage part diversion at two downstream stations.</p>
-      <div class="project-chips"><span class="chip">Ladder Logic</span><span class="chip">PLC</span><span class="chip">HMI</span><span class="chip">Industrial Automation</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
-
-    <!-- Structured Text PLC: Automation, Software -->
-    <a href="projects/structured-text-plc.html" target="_blank" class="project-card fade-up" data-tags="automation software">
-      <div class="project-category">Automation / PLC</div>
-      <div class="project-title">Batch Process Controller — Structured Text</div>
-      <p class="project-desc">Developed a batch process control sequence using Structured Text (IEC 61131-3) to manage a simulated fill-and-seal operation. Implemented state machine logic, timer-based transitions, and alarm conditions.</p>
-      <div class="project-chips"><span class="chip">Structured Text</span><span class="chip">IEC 61131-3</span><span class="chip">PLC</span><span class="chip">State Machine</span></div>
-      <span class="project-arrow">↗</span>
-    </a>
-
+    </div>
+    <div class="projects-fade-overlay" id="projFade"></div>
   </div>
+
+  <!-- Top arrow -->
+  <div id="projToggleTop">
+    <button class="timeline-toggle" id="projTopArrow" onclick="toggleProjects()">
+      <span class="toggle-chevron" id="projTopChevron">↓</span>
+    </button>
+  </div>
+
+  <!-- Hidden: remaining 5 cards -->
+  <div class="projects-extra-wrap" id="projectsExtra">
+    <div class="projects-grid" style="padding-top: 16px;">
+
+      <!-- LSAMP ISS Truss: CAD, DFM, Quality -->
+      <a href="projects/lsamp-iss-truss.html" target="_blank" class="project-card" data-tags="cad dfm quality">
+        <div class="project-category">CAD / DFM / Systems</div>
+        <div class="project-title">LSAMP ISS Mimic Truss Redesign</div>
+        <p class="project-desc">Collaborated with Boeing engineers and Cornell students to redesign the truss connection and solar array insertion mechanism on an ISS mimic structure. Conducted FMEA, applied SolidWorks modeling, and visited NASA's Neutral Buoyancy Lab.</p>
+        <div class="project-chips"><span class="chip">SolidWorks</span><span class="chip">FMEA</span><span class="chip">Boeing</span><span class="chip">NASA NBL</span><span class="chip">Systems Engineering</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <!-- DMAIC Simulated Project: Quality -->
+      <a href="projects/dmaic-project.html" target="_blank" class="project-card" data-tags="quality">
+        <div class="project-category">Quality Engineering</div>
+        <div class="project-title">DMAIC Simulated Project</div>
+        <p class="project-desc">Ran a full DMAIC (Define, Measure, Analyze, Improve, Control) cycle on a simulated production process. Identified root causes of defect variation, applied statistical analysis, and proposed control measures to sustain improvements.</p>
+        <div class="project-chips"><span class="chip">DMAIC</span><span class="chip">Six Sigma</span><span class="chip">SPC</span><span class="chip">Root Cause Analysis</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <!-- BOM to SMT Python: Software, Automation, Quality -->
+      <a href="projects/bom-smt-automation.html" target="_blank" class="project-card" data-tags="software automation quality">
+        <div class="project-category">Software / Automation</div>
+        <div class="project-title">BOM to SMT Python Automation</div>
+        <p class="project-desc">Built a Python CSV-to-CSV cross-checker that validates customer BOMs against SMT machine pick-and-place files before production runs begin. Flags part number mismatches, missing DNPs, and quantity discrepancies automatically.</p>
+        <div class="project-chips"><span class="chip">Python</span><span class="chip">CSV Parsing</span><span class="chip">SMT</span><span class="chip">BOM Validation</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <!-- Ladder Logic PLC: Automation -->
+      <a href="projects/ladder-logic-plc.html" target="_blank" class="project-card" data-tags="automation">
+        <div class="project-category">Automation / PLC</div>
+        <div class="project-title">Conveyor Control — Ladder Logic</div>
+        <p class="project-desc">Programmed a simulated conveyor sorting system using Ladder Logic on a PLC platform. Implemented sensor interlocks, motor control rungs, and fault handling logic to manage part diversion at two downstream stations.</p>
+        <div class="project-chips"><span class="chip">Ladder Logic</span><span class="chip">PLC</span><span class="chip">HMI</span><span class="chip">Industrial Automation</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+      <!-- Structured Text PLC: Automation, Software -->
+      <a href="projects/structured-text-plc.html" target="_blank" class="project-card" data-tags="automation software">
+        <div class="project-category">Automation / PLC</div>
+        <div class="project-title">Batch Process Controller — Structured Text</div>
+        <p class="project-desc">Developed a batch process control sequence using Structured Text (IEC 61131-3) to manage a simulated fill-and-seal operation. Implemented state machine logic, timer-based transitions, and alarm conditions.</p>
+        <div class="project-chips"><span class="chip">Structured Text</span><span class="chip">IEC 61131-3</span><span class="chip">PLC</span><span class="chip">State Machine</span></div>
+        <span class="project-arrow">↗</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Bottom arrow -->
+  <div id="projToggleBottom">
+    <button class="timeline-toggle" onclick="toggleProjects()">
+      <span class="toggle-chevron" id="projBottomChevron" style="transform:rotate(180deg)">↓</span>
+    </button>
+  </div>
+
 </section>
 
 <!-- RESUME -->
@@ -694,6 +739,28 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+/* PROJECT TOGGLE (collapse/expand like timeline) */
+function toggleProjects() {
+  const extra     = document.getElementById('projectsExtra');
+  const fade      = document.getElementById('projFade');
+  const topWrap   = document.getElementById('projToggleTop');
+  const botWrap   = document.getElementById('projToggleBottom');
+  const botChev   = document.getElementById('projBottomChevron');
+  const isOpen    = extra.classList.contains('open');
+
+  if (isOpen) {
+    extra.classList.remove('open');
+    fade.classList.remove('hidden');
+    topWrap.style.display = '';
+    botWrap.style.display = 'none';
+  } else {
+    extra.classList.add('open');
+    fade.classList.add('hidden');
+    topWrap.style.display = 'none';
+    botWrap.style.display = 'block';
+  }
+}
+
 /* PROJECT FILTER */
 const activeFilters = new Set();
 
@@ -701,16 +768,12 @@ function filterProjects(btn) {
   const filter = btn.dataset.filter;
 
   if (filter === 'all') {
-    // Clear all, activate "All"
     activeFilters.clear();
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   } else {
-    // Deactivate "All"
     const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
     allBtn.classList.remove('active');
-
-    // Toggle this filter
     if (activeFilters.has(filter)) {
       activeFilters.delete(filter);
       btn.classList.remove('active');
@@ -718,14 +781,30 @@ function filterProjects(btn) {
       activeFilters.add(filter);
       btn.classList.add('active');
     }
-
-    // If nothing selected, revert to All
-    if (activeFilters.size === 0) {
-      allBtn.classList.add('active');
-    }
+    if (activeFilters.size === 0) allBtn.classList.add('active');
   }
 
-  // Show/hide cards
+  // When filtering, expand the hidden section so all matches are visible
+  const extra   = document.getElementById('projectsExtra');
+  const fade    = document.getElementById('projFade');
+  const topWrap = document.getElementById('projToggleTop');
+  const botWrap = document.getElementById('projToggleBottom');
+
+  if (activeFilters.size > 0) {
+    // Auto-expand to show all filtered results
+    extra.classList.add('open');
+    fade.classList.add('hidden');
+    topWrap.style.display = 'none';
+    botWrap.style.display = 'none'; // hide bottom arrow while filter active
+  } else {
+    // Revert to collapsed default
+    extra.classList.remove('open');
+    fade.classList.remove('hidden');
+    topWrap.style.display = '';
+    botWrap.style.display = 'none';
+  }
+
+  // Show/hide individual cards across both grids
   document.querySelectorAll('.project-card').forEach(card => {
     if (activeFilters.size === 0) {
       card.classList.remove('filtered-out');
