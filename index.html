@@ -508,54 +508,88 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
   </div>
 
   <div class="projects-grid" id="projectsGrid">
-    <!-- Motor Controller: PCB, DFM, CAD -->
-    <a href="projects/motor-controller.html" target="_blank" class="project-card fade-up" data-tags="pcb dfm cad">
+
+    <!-- SpO2 PCB: PCB -->
+    <a href="projects/spo2-pcb.html" target="_blank" class="project-card fade-up" data-tags="pcb">
       <div class="project-category">PCB Design</div>
-      <div class="project-title">Custom Motor Controller PCB</div>
-      <p class="project-desc">Designed a compact motor controller board from schematic to fabrication-ready Gerbers. Focused on trace routing, thermal management, and DFM rules for low-cost manufacturing.</p>
-      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">DFM</span><span class="chip">Gerber</span><span class="chip">Thermal Analysis</span></div>
+      <div class="project-title">SpO2 Pulse Oximeter PCB</div>
+      <p class="project-desc">Designed a custom SpO2 sensor board for blood oxygen monitoring. Handled analog front-end layout, component selection, and fabrication-ready Gerber output with DFM considerations.</p>
+      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">Analog Design</span><span class="chip">Gerber</span><span class="chip">DFM</span></div>
       <span class="project-arrow">↗</span>
     </a>
-    <!-- Inspection Script: Automation, Quality, Software -->
-    <a href="projects/inspection-script.html" target="_blank" class="project-card fade-up" data-tags="automation quality software">
-      <div class="project-category">Process Automation</div>
-      <div class="project-title">Automated Inspection Script</div>
-      <p class="project-desc">Built a Python-based vision inspection tool to detect dimensional defects on machined parts, automating pass/fail decisions against tolerance specs.</p>
-      <div class="project-chips"><span class="chip">Python</span><span class="chip">OpenCV</span><span class="chip">Quality</span><span class="chip">Automation</span></div>
+
+    <!-- BLE Jammer PCB: PCB -->
+    <a href="projects/ble-jammer.html" target="_blank" class="project-card fade-up" data-tags="pcb">
+      <div class="project-category">PCB Design</div>
+      <div class="project-title">BLE Jammer PCB</div>
+      <p class="project-desc">Designed a Bluetooth Low Energy jammer board for RF research purposes. Focused on RF trace routing, impedance matching, antenna placement, and compact 2-layer layout.</p>
+      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">RF Design</span><span class="chip">BLE</span><span class="chip">Embedded</span></div>
       <span class="project-arrow">↗</span>
     </a>
-    <!-- FMEA: Quality, CAD -->
-    <a href="projects/fmea-study.html" target="_blank" class="project-card fade-up" data-tags="quality cad">
+
+    <!-- AirTag Open Source PCB: PCB -->
+    <a href="projects/airtag-pcb.html" target="_blank" class="project-card fade-up" data-tags="pcb">
+      <div class="project-category">PCB Design</div>
+      <div class="project-title">AirTag Open-Source PCB</div>
+      <p class="project-desc">Reverse-engineered and redesigned an open-source AirTag-compatible tracker board. Replicated key UWB and BLE functionality in an accessible, modifiable form factor using publicly available components.</p>
+      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">UWB</span><span class="chip">BLE</span><span class="chip">PCB Layout</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- Gearbox Mechanism: CAD, DFM -->
+    <a href="projects/gearbox-mechanism.html" target="_blank" class="project-card fade-up" data-tags="cad dfm">
+      <div class="project-category">CAD / DFM</div>
+      <div class="project-title">Gearbox Gear Mechanism</div>
+      <p class="project-desc">Designed and 3D printed a multi-stage gearbox assembly in SolidWorks. Applied GD&T tolerancing and DFM principles for printability, fit, and functional clearance between mating components.</p>
+      <div class="project-chips"><span class="chip">SolidWorks</span><span class="chip">3D Printing</span><span class="chip">GD&T</span><span class="chip">Tolerancing</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- LSAMP ISS Truss: CAD, DFM, Quality -->
+    <a href="projects/lsamp-iss-truss.html" target="_blank" class="project-card fade-up" data-tags="cad dfm quality">
+      <div class="project-category">CAD / DFM / Systems</div>
+      <div class="project-title">LSAMP ISS Mimic Truss Redesign</div>
+      <p class="project-desc">Collaborated with Boeing engineers and Cornell students to redesign the truss connection and solar array insertion mechanism on an ISS mimic structure. Conducted FMEA, applied SolidWorks modeling, and visited NASA's Neutral Buoyancy Lab.</p>
+      <div class="project-chips"><span class="chip">SolidWorks</span><span class="chip">FMEA</span><span class="chip">Boeing</span><span class="chip">NASA NBL</span><span class="chip">Systems Engineering</span></div>
+      <span class="project-arrow">↗</span>
+    </a>
+
+    <!-- DMAIC Simulated Project: Quality -->
+    <a href="projects/dmaic-project.html" target="_blank" class="project-card fade-up" data-tags="quality">
       <div class="project-category">Quality Engineering</div>
-      <div class="project-title">FMEA Study — Bracket Assembly</div>
-      <p class="project-desc">Conducted a full DFMEA for a structural bracket assembly, identifying critical failure modes and proposing design changes that improved reliability without adding cost.</p>
-      <div class="project-chips"><span class="chip">DFMEA</span><span class="chip">GD&T</span><span class="chip">Risk Priority</span><span class="chip">SolidWorks</span></div>
+      <div class="project-title">DMAIC Simulated Project</div>
+      <p class="project-desc">Ran a full DMAIC (Define, Measure, Analyze, Improve, Control) cycle on a simulated production process. Identified root causes of defect variation, applied statistical analysis, and proposed control measures to sustain improvements.</p>
+      <div class="project-chips"><span class="chip">DMAIC</span><span class="chip">Six Sigma</span><span class="chip">SPC</span><span class="chip">Root Cause Analysis</span></div>
       <span class="project-arrow">↗</span>
     </a>
-    <!-- Enclosure Redesign: DFM, CAD -->
-    <a href="projects/enclosure-redesign.html" target="_blank" class="project-card fade-up" data-tags="dfm cad">
-      <div class="project-category">DFM</div>
-      <div class="project-title">Enclosure Redesign for Injection Molding</div>
-      <p class="project-desc">Redesigned a sheet metal enclosure for injection molding, applying DFM principles — draft angles, wall uniformity, gate location — while maintaining all functional requirements.</p>
-      <div class="project-chips"><span class="chip">SolidWorks</span><span class="chip">Injection Molding</span><span class="chip">DFM</span><span class="chip">Cost Reduction</span></div>
+
+    <!-- BOM to SMT Python: Software, Automation, Quality -->
+    <a href="projects/bom-smt-automation.html" target="_blank" class="project-card fade-up" data-tags="software automation quality">
+      <div class="project-category">Software / Automation</div>
+      <div class="project-title">BOM to SMT Python Automation</div>
+      <p class="project-desc">Built a Python CSV-to-CSV cross-checker that validates customer BOMs against SMT machine pick-and-place files before production runs begin. Flags part number mismatches, missing DNPs, and quantity discrepancies automatically.</p>
+      <div class="project-chips"><span class="chip">Python</span><span class="chip">CSV Parsing</span><span class="chip">SMT</span><span class="chip">BOM Validation</span></div>
       <span class="project-arrow">↗</span>
     </a>
-    <!-- Line Balancing: Automation, Software -->
-    <a href="projects/line-balancing.html" target="_blank" class="project-card fade-up" data-tags="automation software">
-      <div class="project-category">Automation</div>
-      <div class="project-title">Line Balancing Tool</div>
-      <p class="project-desc">Developed a tool to model assembly line workstation loads, helping identify bottlenecks and balance cycle times across an 8-station production line.</p>
-      <div class="project-chips"><span class="chip">Lean</span><span class="chip">Excel / Python</span><span class="chip">Takt Time</span><span class="chip">Bottleneck Analysis</span></div>
+
+    <!-- Ladder Logic PLC: Automation -->
+    <a href="projects/ladder-logic-plc.html" target="_blank" class="project-card fade-up" data-tags="automation">
+      <div class="project-category">Automation / PLC</div>
+      <div class="project-title">Conveyor Control — Ladder Logic</div>
+      <p class="project-desc">Programmed a simulated conveyor sorting system using Ladder Logic on a PLC platform. Implemented sensor interlocks, motor control rungs, and fault handling logic to manage part diversion at two downstream stations.</p>
+      <div class="project-chips"><span class="chip">Ladder Logic</span><span class="chip">PLC</span><span class="chip">HMI</span><span class="chip">Industrial Automation</span></div>
       <span class="project-arrow">↗</span>
     </a>
-    <!-- Data Logger: PCB, Software, CAD -->
-    <a href="projects/data-logger.html" target="_blank" class="project-card fade-up" data-tags="pcb software">
-      <div class="project-category">PCB + Hardware</div>
-      <div class="project-title">Sensor Data Logger</div>
-      <p class="project-desc">End-to-end hardware project: designed the PCB, wrote firmware for data acquisition from temperature and pressure sensors, and built a Python dashboard for real-time monitoring.</p>
-      <div class="project-chips"><span class="chip">KiCad</span><span class="chip">STM32</span><span class="chip">Python</span><span class="chip">Firmware</span></div>
+
+    <!-- Structured Text PLC: Automation, Software -->
+    <a href="projects/structured-text-plc.html" target="_blank" class="project-card fade-up" data-tags="automation software">
+      <div class="project-category">Automation / PLC</div>
+      <div class="project-title">Batch Process Controller — Structured Text</div>
+      <p class="project-desc">Developed a batch process control sequence using Structured Text (IEC 61131-3) to manage a simulated fill-and-seal operation. Implemented state machine logic, timer-based transitions, and alarm conditions.</p>
+      <div class="project-chips"><span class="chip">Structured Text</span><span class="chip">IEC 61131-3</span><span class="chip">PLC</span><span class="chip">State Machine</span></div>
       <span class="project-arrow">↗</span>
     </a>
+
   </div>
 </section>
 
