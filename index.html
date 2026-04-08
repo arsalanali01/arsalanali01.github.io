@@ -213,17 +213,69 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
 .project-arrow { position: absolute; bottom: 1.25rem; right: 1.25rem; font-size: 16px; color: var(--text-dim); transition: color 0.2s, transform 0.2s; }
 .project-card:hover .project-arrow { color: var(--amber); transform: translate(2px, -2px); }
 
-/* RESUME */
-.resume-section { margin-bottom: 2.5rem; }
-.resume-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
-.resume-item { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-top: 1px solid var(--border); }
-.resume-item:last-child { border-bottom: 1px solid var(--border); }
-.resume-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-dim); padding-top: 3px; }
-.resume-role { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
-.resume-org { font-size: 13px; color: var(--amber); margin-bottom: 8px; }
-.resume-detail { font-size: 13px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
-.resume-download { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--amber-dim); border: 1px solid var(--amber-border); border-radius: 8px; color: var(--amber); font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.2s; margin-top: 2rem; cursor: pointer; }
-.resume-download:hover { background: var(--amber-border); transform: translateY(-1px); }
+/* SCHOOL SECTION */
+.school-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.school-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.school-card:hover { border-color: var(--border2); background: var(--card-hover); }
+.school-card--wide { grid-column: 1 / -1; }
+
+.school-card-label {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--amber); letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.school-degree-title {
+  font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700;
+  color: var(--text); margin-bottom: 4px;
+}
+.school-degree-sub {
+  font-size: 13px; color: var(--amber); margin-bottom: 6px;
+  font-family: 'DM Mono', monospace;
+}
+.school-degree-focus {
+  font-size: 13px; color: var(--text-muted); font-weight: 300;
+}
+.school-course-grid {
+  display: flex; flex-wrap: wrap; gap: 7px;
+}
+.school-chip {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  padding: 4px 10px; border-radius: 6px;
+  background: var(--chip-bg); border: 1px solid var(--chip-border);
+  color: var(--amber); letter-spacing: 0.04em;
+}
+.school-club-list { display: flex; flex-direction: column; gap: 14px; }
+.school-club-item { display: flex; align-items: flex-start; gap: 12px; }
+.school-club-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber); flex-shrink: 0; margin-top: 6px;
+}
+.school-club-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+.school-club-role { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; }
+
+.school-skill-group {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.school-cert-list { display: flex; flex-direction: column; gap: 16px; }
+.school-cert-item { display: flex; align-items: flex-start; gap: 14px; }
+.school-cert-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
+.school-cert-name { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.school-cert-sub { font-size: 12px; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.03em; }
+
+@media (max-width: 700px) {
+  .school-grid { grid-template-columns: 1fr; }
+  .school-card--wide { grid-column: 1; }
+}
 
 /* CONTACT */
 .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
@@ -262,7 +314,7 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#resume">Resume</a></li>
+      <li><a href="resume.pdf" target="_blank">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button>
@@ -638,56 +690,142 @@ body.light .company-logo-item img { filter: grayscale(1) opacity(0.4); }
 
 </section>
 
-<!-- RESUME -->
-<section id="resume">
+<!-- SCHOOL -->
+<section id="school">
   <div class="section-header fade-up">
     <span class="section-num">04</span>
-    <h2 class="section-title">Resume</h2>
+    <h2 class="section-title">@ Texas A&M</h2>
     <div class="section-line"></div>
   </div>
-  <div class="fade-up">
-    <div class="resume-section">
-      <div class="resume-label">Education</div>
-      <div class="resume-item">
-        <div class="resume-date">2024 — 2028</div>
-        <div>
-          <div class="resume-role">B.S. Mechanical Engineering</div>
-          <div class="resume-org">Texas A&M University</div>
-          <div class="resume-detail">Relevant coursework: Manufacturing Processes, Quality Control, Electronics for Engineers, Machine Design, Thermodynamics, Materials Science.</div>
+
+  <div class="school-grid fade-up">
+
+    <!-- Degree card -->
+    <div class="school-card school-card--wide">
+      <div class="school-card-label">Degree</div>
+      <div class="school-degree-title">B.S. Mechanical Engineering</div>
+      <div class="school-degree-sub">Texas A&M University &nbsp;·&nbsp; Class of 2028</div>
+      <div class="school-degree-focus">Focus: Manufacturing, Quality Systems &amp; Electronics</div>
+    </div>
+
+    <!-- Relevant Coursework -->
+    <div class="school-card school-card--wide">
+      <div class="school-card-label">Relevant Coursework</div>
+      <div class="school-course-grid">
+        <span class="school-chip">Manufacturing Processes</span>
+        <span class="school-chip">Quality Control &amp; Reliability</span>
+        <span class="school-chip">Electronics for Engineers</span>
+        <span class="school-chip">Machine Design</span>
+        <span class="school-chip">Thermodynamics</span>
+        <span class="school-chip">Materials Science</span>
+        <span class="school-chip">Engineering Mechanics</span>
+        <span class="school-chip">Dynamics</span>
+        <span class="school-chip">Numerical Methods</span>
+        <span class="school-chip">Circuits &amp; Electronics Lab</span>
+      </div>
+    </div>
+
+    <!-- Clubs & Organizations -->
+    <div class="school-card">
+      <div class="school-card-label">Clubs &amp; Organizations</div>
+      <div class="school-club-list">
+        <div class="school-club-item">
+          <div class="school-club-dot"></div>
+          <div>
+            <div class="school-club-name">LSAMP (Louis Stokes Alliance for Minority Participation)</div>
+            <div class="school-club-role">Research Scholar</div>
+          </div>
+        </div>
+        <div class="school-club-item">
+          <div class="school-club-dot"></div>
+          <div>
+            <div class="school-club-name">IEEE Student Branch</div>
+            <div class="school-club-role">Member</div>
+          </div>
+        </div>
+        <div class="school-club-item">
+          <div class="school-club-dot"></div>
+          <div>
+            <div class="school-club-name">ASME Student Chapter</div>
+            <div class="school-club-role">Member</div>
+          </div>
+        </div>
+        <div class="school-club-item">
+          <div class="school-club-dot"></div>
+          <div>
+            <div class="school-club-name">Engineering Student Council</div>
+            <div class="school-club-role">Member</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="resume-section">
-      <div class="resume-label">Experience</div>
-      <div class="resume-item">
-        <div class="resume-date">Summer 2024</div>
+
+    <!-- Technical Skills -->
+    <div class="school-card">
+      <div class="school-card-label">Technical Skills</div>
+      <div class="school-skills-cols">
         <div>
-          <div class="resume-role">Engineering Intern</div>
-          <div class="resume-org">Company Name</div>
-          <div class="resume-detail">Assisted with quality documentation, DFM reviews on incoming part designs, and contributed to process improvement initiatives on the production floor.</div>
+          <div class="school-skill-group">Software &amp; CAD</div>
+          <div class="school-course-grid">
+            <span class="school-chip">SolidWorks</span>
+            <span class="school-chip">KiCad</span>
+            <span class="school-chip">Altium Designer</span>
+            <span class="school-chip">AutoCAD</span>
+            <span class="school-chip">Fusion 360</span>
+          </div>
         </div>
-      </div>
-      <div class="resume-item">
-        <div class="resume-date">2023 — 2024</div>
-        <div>
-          <div class="resume-role">Project Lead — Senior Design</div>
-          <div class="resume-org">Texas A&M University</div>
-          <div class="resume-detail">Led a 4-person team to design and prototype an automated component sorting system. Responsible for PCB design, mechanical design, and system integration.</div>
+        <div style="margin-top:1rem;">
+          <div class="school-skill-group">Programming</div>
+          <div class="school-course-grid">
+            <span class="school-chip">Python</span>
+            <span class="school-chip">MATLAB</span>
+            <span class="school-chip">C (Embedded)</span>
+            <span class="school-chip">Ladder Logic</span>
+            <span class="school-chip">Structured Text</span>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <div class="school-skill-group">Engineering Methods</div>
+          <div class="school-course-grid">
+            <span class="school-chip">GD&amp;T</span>
+            <span class="school-chip">FMEA / DFMEA</span>
+            <span class="school-chip">DFM / DFA</span>
+            <span class="school-chip">Lean / Six Sigma</span>
+            <span class="school-chip">SPC</span>
+            <span class="school-chip">8D / 5 Why</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="resume-section">
-      <div class="resume-label">Skills</div>
-      <div class="resume-item">
-        <div class="resume-date">Software</div>
-        <div class="resume-detail">SolidWorks, KiCad, Altium Designer, MATLAB, Python, Excel, AutoCAD</div>
-      </div>
-      <div class="resume-item">
-        <div class="resume-date">Engineering</div>
-        <div class="resume-detail">GD&T, FMEA / DFMEA, DFM / DFA, Lean Manufacturing, Six Sigma (fundamentals), Statistical Process Control</div>
+
+    <!-- Certifications & Programs -->
+    <div class="school-card school-card--wide">
+      <div class="school-card-label">Certifications &amp; Programs</div>
+      <div class="school-cert-list">
+        <div class="school-cert-item">
+          <div class="school-cert-icon">🚀</div>
+          <div>
+            <div class="school-cert-name">NASA College Aerospace Scholar (NCAS)</div>
+            <div class="school-cert-sub">Competitive program · Systems engineering &amp; mission design · 2025</div>
+          </div>
+        </div>
+        <div class="school-cert-item">
+          <div class="school-cert-icon">🎓</div>
+          <div>
+            <div class="school-cert-name">Autodesk Student Ambassador</div>
+            <div class="school-cert-sub">Campus representative · Fusion 360 &amp; CAD outreach · 2025–Present</div>
+          </div>
+        </div>
+        <div class="school-cert-item">
+          <div class="school-cert-icon">🏭</div>
+          <div>
+            <div class="school-cert-name">LSAMP Research Scholar</div>
+            <div class="school-cert-sub">ISS truss redesign · Boeing &amp; Cornell collaboration · NASA NBL visit · 2025</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="resume-download" onclick="alert('Add your resume PDF link here!')">↓ Download Full Resume (PDF)</div>
+
   </div>
 </section>
 
